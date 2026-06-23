@@ -1,0 +1,5103 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="description" content="یک دعوت خاص از سامیار اوپا برای هلیا آگاسی — یک پرونده کوچک و محرمانه برای ثبت یک قرار با طعم زندگی" />
+  <title>پرونده آگاسی | Helya × Samyar</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Jalaali JS for Persian Calendar -->
+  <script src="https://cdn.jsdelivr.net/npm/jalaali-js@1.1.4/dist/jalaali.min.js"></script>
+
+  <style>
+    /* ========================
+       CSS CUSTOM PROPERTIES
+    ======================== */
+    :root {
+      --black-deep: #07040D;
+      --purple-dark: #25113F;
+      --wine: #7A1F4D;
+      --gold: #D8B45A;
+      --gold-light: #F0D07A;
+      --pink: #FF6FAE;
+      --pink-light: #FFB3D1;
+      --cream: #FFF7EA;
+      --glass: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(216, 180, 90, 0.25);
+      --glass-hover: rgba(255, 255, 255, 0.1);
+      --text-primary: #FFF7EA;
+      --text-secondary: rgba(255, 247, 234, 0.7);
+      --text-muted: rgba(255, 247, 234, 0.45);
+      --shadow-gold: 0 0 40px rgba(216, 180, 90, 0.2);
+      --shadow-pink: 0 0 40px rgba(255, 111, 174, 0.2);
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================
+       RESET & BASE
+    ======================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans Arabic', 'Noto Sans KR', system-ui, sans-serif;
+      background-color: var(--black-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      direction: rtl;
+      text-align: right;
+    }
+
+    /* ========================
+       ANIMATED BACKGROUND
+    ======================== */
+    .bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(37,17,63,0.95) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 100% 50%, rgba(122,31,77,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 0% 50%, rgba(37,17,63,0.4) 0%, transparent 60%),
+        linear-gradient(180deg, #07040D 0%, #120825 40%, #1a0932 70%, #07040D 100%);
+    }
+
+    .aurora {
+      position: absolute;
+      width: 600px;
+      height: 300px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: aurora-drift 12s ease-in-out infinite alternate;
+    }
+
+    .aurora-1 {
+      background: radial-gradient(ellipse, #7A1F4D, #25113F, transparent);
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .aurora-2 {
+      background: radial-gradient(ellipse, #D8B45A, #7A1F4D, transparent);
+      top: 20%;
+      right: -100px;
+      width: 400px;
+      height: 200px;
+      animation-delay: -6s;
+      opacity: 0.1;
+    }
+
+    .aurora-3 {
+      background: radial-gradient(ellipse, #FF6FAE, #25113F, transparent);
+      bottom: 20%;
+      left: -100px;
+      width: 350px;
+      height: 200px;
+      animation-delay: -3s;
+      opacity: 0.1;
+    }
+
+    @keyframes aurora-drift {
+      0% { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 0.1; }
+      50% { transform: translateX(-45%) scale(1.2) rotate(5deg); opacity: 0.2; }
+      100% { transform: translateX(-55%) scale(0.9) rotate(-3deg); opacity: 0.12; }
+    }
+
+    /* Stars */
+    .stars-container {
+      position: absolute;
+      inset: 0;
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: twinkle var(--dur, 3s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: var(--min-op, 0.1); transform: scale(1); }
+      50% { opacity: var(--max-op, 0.8); transform: scale(1.3); }
+    }
+
+    /* ========================
+       APP SHELL
+    ======================== */
+    .app-shell {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px;
+    }
+
+    /* ========================
+       SCREENS (STAGES)
+    ======================== */
+    .screen {
+      display: none;
+      width: 100%;
+      max-width: 560px;
+      animation: screen-enter 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @keyframes screen-enter {
+      from { opacity: 0; transform: translateY(30px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ========================
+       CARD
+    ======================== */
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 36px 28px;
+      width: 100%;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow:
+        0 8px 32px rgba(0,0,0,0.4),
+        0 0 0 1px rgba(216,180,90,0.1) inset,
+        var(--shadow-gold);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(216,180,90,0.5), rgba(255,111,174,0.3), transparent);
+    }
+
+    .card-glow {
+      position: absolute;
+      inset: -50%;
+      background: radial-gradient(ellipse at center, rgba(216,180,90,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ========================
+       LOGO / BADGE
+    ======================== */
+    .logo-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 28px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .logo-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25113F 0%, #7A1F4D 40%, #D8B45A 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--cream);
+      letter-spacing: 2px;
+      border: 2px solid rgba(216,180,90,0.4);
+      box-shadow:
+        0 0 20px rgba(216,180,90,0.3),
+        0 0 60px rgba(122,31,77,0.2),
+        inset 0 0 20px rgba(255,111,174,0.1);
+      position: relative;
+      transition: var(--transition);
+      animation: logo-glow 4s ease-in-out infinite alternate;
+    }
+
+    .logo-circle:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 30px rgba(216,180,90,0.5),
+        0 0 80px rgba(122,31,77,0.3),
+        inset 0 0 30px rgba(255,111,174,0.15);
+    }
+
+    @keyframes logo-glow {
+      from { box-shadow: 0 0 20px rgba(216,180,90,0.3), 0 0 60px rgba(122,31,77,0.2), inset 0 0 20px rgba(255,111,174,0.1); }
+      to { box-shadow: 0 0 35px rgba(216,180,90,0.5), 0 0 80px rgba(122,31,77,0.3), inset 0 0 30px rgba(255,111,174,0.15); }
+    }
+
+    .logo-subtitle {
+      margin-top: 8px;
+      font-size: 11px;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 3px;
+      color: var(--gold);
+      opacity: 0.8;
+      text-transform: uppercase;
+    }
+
+    /* ========================
+       TYPOGRAPHY
+    ======================== */
+    .screen-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.4;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .screen-subtitle {
+      font-size: 0.8rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+      direction: ltr;
+    }
+
+    .screen-pronunciation {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .screen-body {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      text-align: right;
+      margin-bottom: 28px;
+    }
+
+    .screen-body strong {
+      color: var(--gold-light);
+    }
+
+    .highlight {
+      color: var(--pink-light);
+      font-weight: 600;
+    }
+
+    /* ========================
+       BUTTONS
+    ======================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      border: none;
+      font-family: 'Noto Sans Arabic', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      min-height: 52px;
+      min-width: 120px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(255,255,255,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .btn:hover::after { opacity: 1; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #7A1F4D, #D8B45A);
+      color: var(--cream);
+      box-shadow: 0 4px 20px rgba(216,180,90,0.3), 0 0 0 1px rgba(216,180,90,0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(216,180,90,0.5), 0 0 0 1px rgba(216,180,90,0.4);
+    }
+
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-secondary {
+      background: var(--glass);
+      color: var(--text-secondary);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: var(--glass-hover);
+      color: var(--cream);
+      border-color: rgba(255,255,255,0.25);
+      transform: translateY(-1px);
+    }
+
+    .btn-no {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px dashed rgba(255,255,255,0.2);
+      font-size: 0.9rem;
+    }
+
+    .btn-no:hover {
+      color: var(--text-secondary);
+      border-color: rgba(255,255,255,0.35);
+    }
+
+    .btn-korean {
+      display: block;
+      font-size: 0.72rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--gold);
+      opacity: 0.8;
+      margin-top: 2px;
+      font-weight: 400;
+      direction: ltr;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .btn-row .btn {
+      flex: 1;
+    }
+
+    /* ========================
+       LOADING SCREEN
+    ======================== */
+    #screen-loading {
+      text-align: center;
+    }
+
+    .loading-stamp {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(216,180,90,0.15), rgba(122,31,77,0.15));
+      border: 2px solid rgba(216,180,90,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 24px;
+      animation: stamp-appear 0.5s ease, stamp-pulse 3s ease-in-out infinite 0.5s;
+    }
+
+    @keyframes stamp-appear {
+      from { opacity: 0; transform: scale(0.5) rotate(-20deg); }
+      to { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    @keyframes stamp-pulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(216,180,90,0.2); }
+      50% { box-shadow: 0 0 35px rgba(216,180,90,0.5); }
+    }
+
+    .loading-messages {
+      min-height: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .loading-msg {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.5s ease;
+      text-align: center;
+      position: absolute;
+    }
+
+    .loading-msg.show {
+      opacity: 1;
+      transform: translateY(0);
+      position: relative;
+    }
+
+    .loading-msg-fa {
+      font-size: 1.05rem;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+
+    .loading-msg-kr {
+      font-size: 0.75rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--gold);
+      opacity: 0.75;
+      direction: ltr;
+    }
+
+    .progress-bar-track {
+      width: 100%;
+      height: 3px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #7A1F4D, #D8B45A, #FF6FAE);
+      border-radius: 3px;
+      width: 0%;
+      transition: width 0.5s ease;
+      box-shadow: 0 0 8px rgba(216,180,90,0.5);
+    }
+
+    /* ========================
+       DIVIDER
+    ======================== */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: var(--gold);
+      opacity: 0.5;
+      font-size: 0.8rem;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(216,180,90,0.4), transparent);
+    }
+
+    /* ========================
+       TOAST / NOTIFICATION
+    ======================== */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(37,17,63,0.95);
+      border: 1px solid rgba(216,180,90,0.3);
+      border-radius: 16px;
+      padding: 14px 22px;
+      max-width: 340px;
+      width: calc(100% - 32px);
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--cream);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(216,180,90,0.1);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ========================
+       INVITATION SCREEN
+    ======================== */
+    .invitation-body {
+      background: rgba(37,17,63,0.3);
+      border-right: 3px solid var(--gold);
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+
+    .invitation-body p {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--text-secondary);
+    }
+
+    .invitation-body .subject-line {
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-family: 'Noto Sans KR', sans-serif;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      direction: ltr;
+    }
+
+    /* No button shake animation */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-4px); }
+      40% { transform: translateX(4px); }
+      60% { transform: translateX(-3px); }
+      80% { transform: translateX(3px); }
+    }
+
+    .shake { animation: shake 0.5s ease; }
+
+    /* ========================
+       DATE TYPE GRID
+    ======================== */
+    .date-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .date-card {
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 16px 12px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .date-card:hover {
+      background: var(--glass-hover);
+      border-color: rgba(216,180,90,0.3);
+      transform: translateY(-2px);
+    }
+
+    .date-card.selected {
+      background: rgba(122,31,77,0.25);
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(216,180,90,0.2), inset 0 0 20px rgba(216,180,90,0.05);
+    }
+
+    .date-card.selected::before {
+      content: '✓';
+      position: absolute;
+      top: 6px;
+      left: 8px;
+      font-size: 12px;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .date-card-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+      display: block;
+      line-height: 1;
+    }
+
+    .date-card-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+
+    .date-card-kr {
+      font-size: 0.65rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--gold);
+      margin-bottom: 2px;
+      direction: ltr;
+    }
+
+    .date-card-pronunciation {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .date-card-desc {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      display: none;
+    }
+
+    .date-card.selected .date-card-desc {
+      display: block;
+      color: var(--text-secondary);
+    }
+
+    /* ========================
+       SELECTION FEEDBACK
+    ======================== */
+    .selection-feedback {
+      background: rgba(216,180,90,0.08);
+      border: 1px solid rgba(216,180,90,0.2);
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    /* ========================
+       DATE/TIME PICKER
+    ======================== */
+    .calendar-wrapper {
+      background: rgba(37,17,63,0.4);
+      border: 1px solid rgba(216,180,90,0.2);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .calendar-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .calendar-nav-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: var(--cream);
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    .calendar-nav-btn:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(216,180,90,0.3);
+    }
+
+    .calendar-month-year {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .cal-day-header {
+      text-align: center;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      padding: 4px 0;
+      font-weight: 600;
+    }
+
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+    }
+
+    .cal-day:hover:not(.disabled):not(.empty) {
+      background: rgba(216,180,90,0.15);
+      border-color: rgba(216,180,90,0.3);
+      color: var(--cream);
+    }
+
+    .cal-day.selected {
+      background: linear-gradient(135deg, #7A1F4D, #D8B45A);
+      color: var(--cream);
+      font-weight: 700;
+      border-color: var(--gold);
+      box-shadow: 0 0 12px rgba(216,180,90,0.3);
+    }
+
+    .cal-day.today {
+      border-color: rgba(255,111,174,0.4);
+      color: var(--pink-light);
+    }
+
+    .cal-day.disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+
+    .cal-day.empty {
+      cursor: default;
+    }
+
+    /* Time Presets */
+    .time-presets {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .time-preset {
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 12px 10px;
+      cursor: pointer;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .time-preset:hover {
+      background: var(--glass-hover);
+      border-color: rgba(216,180,90,0.25);
+    }
+
+    .time-preset.selected {
+      background: rgba(122,31,77,0.3);
+      border-color: var(--gold);
+    }
+
+    .time-preset-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 2px;
+    }
+
+    .time-preset-range {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      direction: ltr;
+    }
+
+    .time-custom {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+    }
+
+    .time-custom label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .time-custom input[type="time"] {
+      background: transparent;
+      border: none;
+      color: var(--gold-light);
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      direction: ltr;
+      flex: 1;
+    }
+
+    /* ========================
+       CONFIRMATION SCREEN
+    ======================== */
+    .summary-card {
+      background: rgba(37,17,63,0.4);
+      border: 1px solid rgba(216,180,90,0.25);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .summary-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .summary-row:last-child { border-bottom: none; }
+
+    .summary-label {
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 600;
+      white-space: nowrap;
+      min-width: 80px;
+      padding-top: 2px;
+    }
+
+    .summary-value {
+      font-size: 0.9rem;
+      color: var(--cream);
+      line-height: 1.5;
+    }
+
+    .final-message {
+      background: rgba(122,31,77,0.15);
+      border-right: 3px solid var(--pink);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: var(--text-secondary);
+    }
+
+    /* ========================
+       SUCCESS SCREEN
+    ======================== */
+    .success-icon {
+      font-size: 64px;
+      text-align: center;
+      margin-bottom: 16px;
+      animation: success-bounce 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+    }
+
+    @keyframes success-bounce {
+      0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-8px); }
+    }
+
+    .countdown-box {
+      background: rgba(37,17,63,0.5);
+      border: 1px solid rgba(216,180,90,0.3);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .countdown-label {
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .countdown-display {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .countdown-unit {
+      text-align: center;
+    }
+
+    .countdown-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--cream);
+      font-feature-settings: "tnum";
+      line-height: 1;
+      display: block;
+      min-width: 48px;
+    }
+
+    .countdown-unit-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .countdown-sep {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+      animation: blink-sep 1s ease-in-out infinite;
+    }
+
+    @keyframes blink-sep { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* ========================
+       CONFETTI
+    ======================== */
+    .confetti-particle {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 999;
+      animation: confetti-fall linear forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* ========================
+       MINI SCREEN (for No flow)
+    ======================== */
+    .mini-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .mini-screen.active { display: flex; }
+
+    .mini-screen-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .mini-screen-title {
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .mini-screen-body {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    /* ========================
+       EASTER EGG
+    ======================== */
+    .easter-egg-toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background: rgba(122,31,77,0.95);
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-size: 0.85rem;
+      color: var(--cream);
+      text-align: center;
+      z-index: 200;
+      transition: transform 0.4s ease;
+      white-space: nowrap;
+    }
+
+    .easter-egg-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ========================
+       FLOATING EMOJI ANIMATION
+    ======================== */
+    .float-emoji {
+      position: fixed;
+      font-size: 32px;
+      bottom: -60px;
+      animation: float-up 3s ease forwards;
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    @keyframes float-up {
+      0% { bottom: -60px; opacity: 1; }
+      70% { opacity: 1; }
+      100% { bottom: 110vh; opacity: 0; }
+    }
+
+    /* Gallery frame effect */
+    .gallery-frame-effect .date-card {
+      border-color: rgba(216,180,90,0.5) !important;
+      box-shadow: 0 0 15px rgba(216,180,90,0.2), inset 0 0 10px rgba(216,180,90,0.03);
+    }
+
+    /* ========================
+       MICROCOPY HINT
+    ======================== */
+    .microcopy {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .microcopy .emoji { font-style: normal; }
+
+    /* ========================
+       FOOTER
+    ======================== */
+    .footer-note {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      direction: rtl;
+    }
+
+    .footer-note a {
+      color: var(--gold);
+      text-decoration: none;
+      opacity: 0.7;
+    }
+
+    /* ========================
+       RESPONSIVE
+    ======================== */
+    @media (max-width: 400px) {
+      .card { padding: 24px 16px; border-radius: 20px; }
+      .screen-title { font-size: 1.25rem; }
+      .date-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .date-card { padding: 12px 8px; }
+      .date-card-icon { font-size: 22px; }
+      .time-presets { grid-template-columns: 1fr 1fr; }
+      .countdown-number { font-size: 1.5rem; }
+    }
+
+    @media (min-width: 600px) {
+      .date-grid { grid-template-columns: repeat(3, 1fr); }
+      .card { padding: 44px 40px; }
+      .screen-title { font-size: 1.7rem; }
+    }
+
+    /* ========================
+       REDUCED MOTION
+    ======================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2ms !important;
+      }
+      .aurora { display: none; }
+      .star { animation: none; }
+    }
+
+    /* ========================
+       FOCUS / A11Y
+    ======================== */
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .btn:focus-visible {
+      outline-offset: 4px;
+    }
+
+    /* ========================
+       SCROLLBAR
+    ======================== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(216,180,90,0.3);
+      border-radius: 3px;
+    }
+
+    /* ========================
+       STEP INDICATOR
+    ======================== */
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      transition: var(--transition);
+    }
+
+    .step-dot.active {
+      background: var(--gold);
+      box-shadow: 0 0 8px rgba(216,180,90,0.6);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    .step-dot.done {
+      background: var(--wine);
+    }
+
+    /* ========================
+       BACK BUTTON
+    ======================== */
+    .back-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 0;
+      font-family: inherit;
+      transition: color 0.2s;
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+
+    .back-btn:hover { color: var(--gold); }
+
+    /* ========================
+       LOADING STATE (for submit)
+    ======================== */
+    .btn-loading {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ========================
+       CINEMATIC GRAIN OVERLAY
+    ======================== */
+    .grain-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+      animation: grain-shift 0.4s steps(1) infinite;
+    }
+    @keyframes grain-shift {
+      0%   { background-position: 0 0; }
+      25%  { background-position: -25px -50px; }
+      50%  { background-position: -50px 25px; }
+      75%  { background-position: 25px -25px; }
+      100% { background-position: 0 0; }
+    }
+
+    /* ========================
+       LIGHT LEAK
+    ======================== */
+    .light-leak {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 50%;
+      mix-blend-mode: screen;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .light-leak.gold  { background: radial-gradient(ellipse, rgba(216,180,90,.18), transparent 70%);  width:500px; height:300px; top:-80px; right:-80px; }
+    .light-leak.pink  { background: radial-gradient(ellipse, rgba(255,111,174,.14), transparent 70%); width:400px; height:250px; bottom:60px; left:-60px; }
+    .light-leak.crown { background: radial-gradient(ellipse, rgba(200,160,255,.12), transparent 70%); width:450px; height:280px; top:20%; left:-50px; }
+    .light-leak.active { opacity: 1; }
+
+    /* ========================
+       HERO COLLAGE
+    ======================== */
+    .hero-collage {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: 24px;
+      z-index: 0;
+    }
+    .hero-collage-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+    .hero-collage-img.loaded { opacity: 1; }
+    .hero-collage-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(7,4,13,.05) 0%, rgba(7,4,13,.78) 70%, rgba(7,4,13,.97) 100%),
+        linear-gradient(90deg, rgba(37,17,63,.55) 0%, transparent 60%),
+        radial-gradient(ellipse at 30% 20%, rgba(216,180,90,.12), transparent 50%);
+      z-index: 1;
+    }
+    .card { position: relative; overflow: hidden; }
+    .card > *:not(.hero-collage) { position: relative; z-index: 2; }
+    .card > .card-glow { z-index: 2; }
+
+    /* ========================
+       FILM STRIP
+    ======================== */
+    .film-strip-wrap {
+      width: calc(100% + 32px);
+      margin: 0 -16px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .film-strip {
+      display: flex;
+      gap: 3px;
+      padding: 0 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-snap-type: x mandatory;
+    }
+    .film-strip::-webkit-scrollbar { display: none; }
+    .film-frame {
+      flex: 0 0 110px;
+      height: 74px;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      scroll-snap-align: start;
+      cursor: pointer;
+      background: rgba(37,17,63,.6);
+      border: 1px solid rgba(216,180,90,.15);
+      transition: all .3s ease;
+    }
+    .film-frame:hover { transform: scale(1.04); border-color: rgba(216,180,90,.45); }
+    .film-frame-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .8s ease;
+    }
+    .film-frame-img.loaded { opacity: .82; }
+    .film-frame-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(7,4,13,.88));
+      padding: 6px 5px 4px;
+      font-size: .52rem;
+      color: rgba(255,247,234,.75);
+      text-align: center;
+      direction: rtl;
+      line-height: 1.2;
+    }
+    .film-strip-fade-l, .film-strip-fade-r {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 28px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .film-strip-fade-l { left: 0;  background: linear-gradient(to right, var(--black-deep), transparent); }
+    .film-strip-fade-r { right: 0; background: linear-gradient(to left,  var(--black-deep), transparent); }
+
+    /* ========================
+       POSTCARD CARDS
+    ======================== */
+    .postcard-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .postcard {
+      width: 88px;
+      height: 60px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0,0,0,.5), 0 0 0 1px rgba(216,180,90,.15);
+      transform: rotate(var(--rot, -2deg));
+      transition: transform .35s ease, box-shadow .35s ease;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .postcard:hover { transform: rotate(0deg) scale(1.08); box-shadow: 0 8px 28px rgba(0,0,0,.6), 0 0 0 1px rgba(216,180,90,.4); }
+    .postcard-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .8s ease;
+    }
+    .postcard-img.loaded { opacity: 1; }
+    .postcard-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(7,4,13,.75));
+    }
+    .postcard-caption {
+      position: absolute;
+      bottom: 3px;
+      left: 0; right: 0;
+      font-size: .5rem;
+      color: rgba(255,247,234,.8);
+      text-align: center;
+      direction: rtl;
+      padding: 0 3px;
+    }
+    .postcard-fallback {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    /* ========================
+       DYNAMIC DATE MOOD
+    ======================== */
+    .mood-bg-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+      border-radius: 24px;
+      pointer-events: none;
+    }
+    .mood-bg-layer.active { opacity: 1; }
+    .date-card { transition: var(--transition), border-color .5s ease; }
+
+    /* ========================
+       SUCCESS TICKET
+    ======================== */
+    .ticket {
+      background: rgba(20,10,35,.92);
+      border: 1px solid rgba(216,180,90,.35);
+      border-radius: 20px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 60px rgba(216,180,90,.12), 0 0 0 1px rgba(216,180,90,.08) inset;
+      margin-bottom: 16px;
+    }
+    .ticket-header {
+      background: linear-gradient(135deg, #1a0830 0%, #2d1248 50%, #1a0830 100%);
+      padding: 20px 22px 16px;
+      border-bottom: 1px dashed rgba(216,180,90,.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .ticket-header-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 1.2s ease;
+      mix-blend-mode: luminosity;
+    }
+    .ticket-header-bg.loaded { opacity: .18; }
+    .ticket-header-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,8,48,.7), rgba(45,18,72,.5));
+    }
+    .ticket-header-content { position: relative; z-index: 2; }
+    .ticket-case-id {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      color: var(--gold);
+      letter-spacing: 3px;
+      opacity: .8;
+      direction: ltr;
+      margin-bottom: 6px;
+    }
+    .ticket-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .ticket-subtitle {
+      font-size: .72rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--gold);
+      direction: ltr;
+      margin-top: 4px;
+      opacity: .8;
+    }
+    .ticket-stamp {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid rgba(216,180,90,.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transform: rotate(-12deg);
+      opacity: .9;
+    }
+    .ticket-stamp-text {
+      font-size: .38rem;
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .ticket-stamp-icon { font-size: 18px; }
+    .ticket-body {
+      padding: 18px 22px;
+    }
+    .ticket-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .ticket-row:last-child { border-bottom: none; }
+    .ticket-label {
+      font-size: .7rem;
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+      min-width: 72px;
+      padding-top: 2px;
+    }
+    .ticket-value {
+      font-size: .88rem;
+      color: var(--cream);
+      line-height: 1.5;
+    }
+    .ticket-footer {
+      padding: 12px 22px 16px;
+      border-top: 1px dashed rgba(216,180,90,.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .ticket-qr {
+      width: 52px;
+      height: 52px;
+      background: rgba(216,180,90,.08);
+      border: 1px solid rgba(216,180,90,.2);
+      border-radius: 6px;
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      gap: 2px;
+      padding: 5px;
+      flex-shrink: 0;
+    }
+    .ticket-qr-cell {
+      background: rgba(216,180,90,.35);
+      border-radius: 1px;
+    }
+    .ticket-collage {
+      display: flex;
+      gap: 5px;
+      flex: 1;
+    }
+    .ticket-thumb {
+      flex: 1;
+      height: 52px;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      background: rgba(37,17,63,.5);
+    }
+    .ticket-thumb-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .8s ease;
+    }
+    .ticket-thumb-img.loaded { opacity: .85; }
+    .ticket-thumb-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      font-size: .38rem;
+      color: rgba(255,247,234,.7);
+      text-align: center;
+      padding: 2px;
+      background: linear-gradient(transparent, rgba(7,4,13,.8));
+      direction: ltr;
+    }
+
+    /* Fallback CSS for no images */
+    .fallback-mr-queen {
+      background:
+        radial-gradient(circle at 30% 20%, rgba(216,180,90,.35), transparent 35%),
+        linear-gradient(135deg, #120714, #2a1238 50%, #09040d);
+    }
+    .fallback-perfect-crown {
+      background:
+        radial-gradient(circle at 70% 20%, rgba(200,160,255,.30), transparent 35%),
+        linear-gradient(135deg, #0b0614, #221040 55%, #160916);
+    }
+    .fallback-filing-love {
+      background:
+        radial-gradient(circle at 20% 80%, rgba(216,180,90,.22), transparent 35%),
+        linear-gradient(135deg, #0c0810, #32182f 55%, #08040b);
+    }
+
+    /* =============================================================================
+       INTERACTION UPGRADE & AESTHETICS STYLES
+       ============================================================================= */
+    
+    /* Vibe Selector */
+    .vibe-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+      width: 100%;
+    }
+    .vibe-card {
+      background: var(--glass);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 14px 10px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .vibe-card:hover {
+      background: var(--glass-hover);
+      border-color: rgba(216,180,90,0.3);
+      transform: translateY(-2px);
+    }
+    .vibe-card.selected {
+      background: rgba(122,31,77,0.2);
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(216,180,90,0.25), inset 0 0 15px rgba(216,180,90,0.05);
+    }
+    .vibe-card-icon {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+    .vibe-card-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--cream);
+      font-family: 'Cinzel', serif;
+      margin-bottom: 2px;
+    }
+    .vibe-card-fa {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .vibe-card-mood {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Crown Meter */
+    .crown-meter-container {
+      background: rgba(37, 17, 63, 0.35);
+      border: 1px solid rgba(216, 180, 90, 0.15);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 24px;
+      width: 100%;
+    }
+    .crown-meter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .crown-meter-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+    .crown-meter-value {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--cream);
+      font-family: 'Cinzel', serif;
+    }
+    .crown-meter-track {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .crown-meter-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #D8B45A, #FF6FAE, #D8B45A);
+      background-size: 200% auto;
+      border-radius: 4px;
+      width: 50%;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 10px rgba(255, 111, 174, 0.4);
+      animation: gradient-shift 3s linear infinite;
+    }
+    .crown-meter-commentary {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      font-style: italic;
+      text-align: right;
+    }
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Expandable Date Cards & Mini Scene Cards */
+    .date-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 120px;
+      transition: var(--transition);
+    }
+    .date-card.expanded {
+      grid-column: span 2;
+      min-height: auto;
+      cursor: default;
+      background: rgba(37, 17, 63, 0.6);
+      border-color: var(--gold);
+    }
+    @media (min-width: 600px) {
+      .date-card.expanded {
+        grid-column: span 3;
+      }
+    }
+    .date-card-scene {
+      display: none;
+      margin-top: 14px;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      animation: slide-down 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+    }
+    .date-card.expanded .date-card-scene {
+      display: block;
+    }
+    .date-card.expanded .date-card-desc {
+      display: block;
+      margin-bottom: 8px;
+    }
+    .scene-text {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--cream);
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+    .btn-keep-mode {
+      padding: 8px 16px;
+      min-height: 38px;
+      font-size: 0.82rem;
+      border-radius: 30px;
+      background: var(--gold);
+      color: var(--black-deep);
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn-keep-mode:hover {
+      transform: scale(1.05);
+      background: var(--gold-light);
+      box-shadow: 0 4px 12px rgba(216, 180, 90, 0.4);
+    }
+    @keyframes slide-down {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Royal Decree Objection Scroll Overlay & Modal */
+    .royal-decree-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 16px;
+    }
+    .royal-decree-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .royal-decree-scroll {
+      background: #fdf5e6;
+      border: 3px double #d4af37;
+      border-radius: 4px;
+      color: #3e2723;
+      max-width: 460px;
+      width: 100%;
+      padding: 30px 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 40px rgba(212,175,55,0.15);
+      position: relative;
+      transform: scale(0.9) rotate(-1deg);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-family: 'Noto Sans Arabic', Georgia, serif;
+      direction: rtl;
+      text-align: right;
+    }
+    .royal-decree-overlay.active .royal-decree-scroll {
+      transform: scale(1) rotate(0deg);
+    }
+    .royal-decree-scroll::before, .royal-decree-scroll::after {
+      content: '';
+      position: absolute;
+      left: 10px; right: 10px;
+      height: 4px;
+      border-top: 1px solid #d4af37;
+      border-bottom: 1px solid #d4af37;
+    }
+    .royal-decree-scroll::before { top: 8px; }
+    .royal-decree-scroll::after { bottom: 8px; }
+    
+    .decree-header {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-align: center;
+      color: #8d6e63;
+      border-bottom: 1px solid rgba(212,175,55,0.3);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .decree-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #5d4037;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .decree-body {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #3e2723;
+      margin-bottom: 24px;
+    }
+    .decree-choices {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .decree-choice-btn {
+      background: #efebe9;
+      border: 1px solid #bcaaa4;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      color: #4e342e;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: right;
+      font-weight: 600;
+    }
+    .decree-choice-btn:hover {
+      background: #d7ccc8;
+      border-color: #8d6e63;
+      transform: translateX(-4px);
+    }
+    .decree-stamp {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      border: 2px dashed #d32f2f;
+      border-radius: 50%;
+      width: 76px;
+      height: 76px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-15deg);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+    .decree-stamp-icon {
+      font-size: 20px;
+    }
+    .decree-stamp-text {
+      font-size: 0.38rem;
+      font-family: 'Cinzel', serif;
+      font-weight: bold;
+      color: #d32f2f;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    /* Graceful Exit button */
+    .btn-graceful-exit {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      font-size: 0.85rem;
+      margin-top: 10px;
+      width: 100%;
+    }
+    .btn-graceful-exit:hover {
+      color: var(--pink-light);
+      border-color: var(--pink);
+    }
+
+    /* Pause stamp */
+    .pause-stamp {
+      font-size: 48px;
+      margin-bottom: 16px;
+      animation: pulse 2s infinite;
+    }
+
+    /* Radio Helya Floating Widget */
+    .radio-helya-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      width: 50px;
+      height: 50px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5), var(--shadow-gold);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    }
+    .radio-helya-widget.expanded {
+      width: 260px;
+      height: 120px;
+      border-radius: 20px;
+      padding: 14px 18px;
+    }
+    .radio-toggle-btn {
+      width: 48px;
+      height: 48px;
+      background: transparent;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+    }
+    .radio-helya-body {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      direction: rtl;
+    }
+    .radio-helya-widget.expanded .radio-helya-body {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .radio-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      padding-right: 48px; /* space for toggle button */
+    }
+    .radio-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .radio-eq-canvas {
+      width: 60px;
+      height: 16px;
+    }
+    .radio-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .radio-btn {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 11px;
+      transition: all 0.3s;
+    }
+    .radio-btn:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: var(--gold);
+    }
+    .radio-btn.playing {
+      box-shadow: 0 0 10px var(--pink);
+      border-color: var(--pink);
+    }
+    .radio-wave-select {
+      background: #180d2b;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 4px 8px;
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      font-family: inherit;
+      outline: none;
+      flex: 1;
+      cursor: pointer;
+    }
+    .radio-wave-info {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    /* Developer Debug Panel Drawer */
+    .debug-panel {
+      position: fixed;
+      bottom: -100%;
+      left: 0; right: 0;
+      height: 380px;
+      background: #0c0813;
+      border-top: 2px solid var(--gold);
+      z-index: 1001;
+      transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: monospace;
+      color: #00ff66;
+      box-shadow: 0 -10px 45px rgba(0,0,0,0.8);
+      direction: ltr;
+      text-align: left;
+      font-size: 0.75rem;
+    }
+    .debug-panel.active {
+      bottom: 0;
+    }
+    .debug-header {
+      background: #161022;
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(216,180,90,0.2);
+    }
+    .debug-title {
+      font-weight: bold;
+      color: var(--gold-light);
+    }
+    .debug-close {
+      background: transparent;
+      border: none;
+      color: #ff6666;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .debug-body {
+      padding: 16px 18px;
+      overflow-y: auto;
+      height: calc(100% - 38px);
+    }
+    .debug-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 600px) {
+      .debug-grid {
+        grid-template-columns: 1fr;
+      }
+      .debug-panel {
+        height: 80%;
+      }
+    }
+    .debug-section {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .debug-section-title {
+      font-weight: bold;
+      color: #00e5ff;
+      margin-bottom: 10px;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+      padding-bottom: 4px;
+    }
+    .debug-btn-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .debug-btn {
+      background: #1f1430;
+      border: 1px solid rgba(216,180,90,0.3);
+      color: var(--cream);
+      padding: 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .debug-btn:hover {
+      background: var(--gold);
+      color: var(--black-deep);
+    }
+    .debug-info-row, .debug-switch-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .debug-val {
+      color: var(--cream);
+      word-break: break-all;
+    }
+    .debug-log-area {
+      background: #000;
+      border: 1px solid #161022;
+      border-radius: 6px;
+      padding: 8px;
+      height: 110px;
+      overflow-y: auto;
+      font-size: 0.7rem;
+      color: #39ff14;
+      white-space: pre-wrap;
+    }
+
+    /* Approved seal animations on success card */
+    .stamp-overlay-wrap {
+      position: absolute;
+      top: -30px;
+      left: 10px;
+      width: 140px;
+      height: 140px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .success-stamp-approved {
+      position: absolute;
+      inset: 0;
+      border: 4px double var(--gold);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: scale(3) rotate(-35deg);
+      opacity: 0;
+      font-family: 'Cinzel', serif;
+      background: rgba(20,10,35,0.3);
+      box-shadow: 0 0 15px rgba(216,180,90,0.1);
+    }
+    .success-stamp-approved.animate {
+      animation: stamp-slam 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    .success-stamp-title {
+      font-size: 0.95rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      line-height: 1.2;
+    }
+    .success-stamp-icon {
+      font-size: 26px;
+      margin: 2px 0;
+    }
+    .success-stamp-sub {
+      font-size: 0.42rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .stamp-ripple {
+      position: absolute;
+      inset: 0;
+      border: 4px solid var(--gold);
+      border-radius: 50%;
+      transform: scale(1);
+      opacity: 0;
+    }
+    .stamp-ripple.animate {
+      animation: ripple-out 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) 0.3s forwards;
+    }
+    @keyframes stamp-slam {
+      0% { transform: scale(3) rotate(-35deg); opacity: 0; }
+      100% { transform: scale(1) rotate(-15deg); opacity: 0.85; }
+    }
+    @keyframes ripple-out {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    /* Vibe Themes Overrides */
+    body.vibe-palace {
+      --black-deep: #0c0803;
+      --purple-dark: #2c1c04;
+      --wine: #5a3c0c;
+      --gold: #D8B45A;
+      --gold-light: #F0D07A;
+      --pink: #E5B23D;
+      --pink-light: #FBE69E;
+      --shadow-gold: 0 0 40px rgba(216, 180, 90, 0.4);
+      --shadow-pink: 0 0 40px rgba(229, 178, 61, 0.3);
+      --glass-border: rgba(216, 180, 90, 0.4);
+    }
+    body.vibe-perfect {
+      --black-deep: #0b0610;
+      --purple-dark: #231032;
+      --wine: #721950;
+      --gold: #E89EBC;
+      --gold-light: #FFCBDC;
+      --pink: #FF6FAE;
+      --pink-light: #FFB3D1;
+      --shadow-gold: 0 0 40px rgba(232, 158, 188, 0.35);
+      --shadow-pink: 0 0 40px rgba(255, 111, 174, 0.45);
+      --glass-border: rgba(255, 111, 174, 0.35);
+    }
+    body.vibe-filing {
+      --black-deep: #09080c;
+      --purple-dark: #1e1b24;
+      --wine: #42364c;
+      --gold: #b3a793;
+      --gold-light: #dacfb9;
+      --pink: #9e8e78;
+      --pink-light: #d1c7b7;
+      --cream: #F4EAE1;
+      --glass-border: rgba(179, 167, 147, 0.35);
+      --text-primary: #F4EAE1;
+      --text-secondary: rgba(244, 234, 225, 0.75);
+      --text-muted: rgba(244, 234, 225, 0.45);
+      --shadow-gold: 0 0 40px rgba(179, 167, 147, 0.25);
+      --shadow-pink: 0 0 40px rgba(158, 142, 120, 0.2);
+    }
+
+    @keyframes yes-glow {
+      0%, 100% { box-shadow: 0 0 15px var(--gold), 0 0 5px var(--gold-light); }
+      50% { box-shadow: 0 0 35px var(--gold), 0 0 15px var(--gold-light); }
+    }
+    .glowing-yes {
+      animation: yes-glow 2s infinite alternate;
+    }
+    
+    .fallback-easter {
+      background: linear-gradient(135deg, #120a1e, #1f0f36);
+    }
+
+    /* =============================================
+       TRAILER SCREEN STYLING
+    ============================================= */
+    .screen-trailer-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 10px;
+    }
+    .trailer-player {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(216, 180, 90, 0.15);
+      border: 1px solid var(--glass-border);
+      margin-bottom: 24px;
+    }
+    .trailer-screen-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      display: none;
+    }
+    .trailer-screen-img.active {
+      display: block;
+      opacity: 1;
+    }
+    .trailer-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+      border-radius: 12px;
+    }
+    .trailer-subtitles {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-align: center;
+      pointer-events: none;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      animation: subtitle-slide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes subtitle-slide {
+      from { transform: translateY(10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .trailer-sub-fa {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+      direction: rtl;
+    }
+    .trailer-sub-kr {
+      font-size: 0.85rem;
+      color: #FF6FAE;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+      direction: ltr;
+      font-family: monospace, sans-serif;
+    }
+    .trailer-btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .trailer-audio-toggle {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 20;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+    .trailer-audio-toggle:hover {
+      background: rgba(0, 0, 0, 0.8);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background Canvas -->
+<div class="bg-canvas" aria-hidden="true">
+  <div class="bg-gradient"></div>
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+  <div class="aurora aurora-3"></div>
+  <div class="stars-container" id="stars"></div>
+</div>
+
+<!-- Cinematic Grain -->
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- Light Leaks -->
+<div class="light-leak gold"  id="leak-gold"  aria-hidden="true"></div>
+<div class="light-leak pink"  id="leak-pink"  aria-hidden="true"></div>
+<div class="light-leak crown" id="leak-crown" aria-hidden="true"></div>
+
+<!-- Easter Egg Toast (top) -->
+<div class="easter-egg-toast" id="easter-egg-toast" role="status" aria-live="polite"></div>
+
+<!-- Main Toast (bottom) -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- App Shell -->
+<main class="app-shell" id="app">
+
+  <!-- ========================
+       SCREEN 0: LOADING
+  ======================== -->
+  <div class="screen active" id="screen-loading" aria-label="صفحه بارگذاری">
+    <div style="text-align:center;width:100%;max-width:400px;">
+      <div class="loading-stamp" role="img" aria-label="مهر طلایی">🌙</div>
+      <div class="loading-messages" id="loading-messages"></div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================
+       SCREEN 1: INVITATION
+  ======================== -->
+  <div class="screen" id="screen-invitation" aria-label="دعوتنامه">
+
+    <!-- Film Strip (above card) -->
+    <div class="film-strip-wrap" aria-hidden="true">
+      <div class="film-strip-fade-l"></div>
+      <div class="film-strip-fade-r"></div>
+      <div class="film-strip" id="film-strip">
+        <!-- injected by JS -->
+      </div>
+    </div>
+
+    <div class="card">
+      <!-- Cinematic Hero Collage (behind card content) -->
+      <div class="hero-collage" id="hero-collage" aria-hidden="true">
+        <div class="hero-collage-img" id="collage-img"></div>
+        <div class="hero-collage-overlay"></div>
+      </div>
+
+      <div class="card-glow"></div>
+
+      <!-- Logo -->
+      <div class="logo-badge" id="logo-badge" role="button" aria-label="نشان هلیا و سامیار، سه بار کلیک برای Easter Egg" tabindex="0">
+        <div class="logo-circle">H · S</div>
+        <div class="logo-subtitle">Helya · Samyar</div>
+      </div>
+
+      <div class="screen-title">هلیا آگاسی، یک پرونده مخصوص برای تو باز شده</div>
+      <div class="screen-subtitle">헬리아 아가씨, 특별한 데이트 파일이 열렸어요</div>
+      <div class="screen-pronunciation">هِلیا آگاسی، یک دعوت خاص آماده‌ست</div>
+
+      <div class="divider">✦ پرونده شماره ۰۱ ✦</div>
+
+      <!-- Postcard Row -->
+      <div class="postcard-row" id="postcard-row" aria-hidden="true">
+        <!-- injected by JS -->
+      </div>
+
+      <div class="invitation-body">
+        <div class="subject-line">📁 موضوع: درخواست ثبت یک قرار رمانتیک</div>
+        <p>
+          <strong>آگاسی عزیز،</strong><br/>
+          این یک دعوت ساده نیست؛ یک پرونده کوچک و خیلی محرمانه‌ست که سامیار اوپا با دقت، کمی شیطنت و مقدار کنترل‌شده‌ای ذوق آماده کرده.<br/><br/>
+          موضوع پرونده: یک قرار که قرار نیست ترسناک، سنگین یا عجیب باشه. فقط چند ساعت که توش <span class="highlight">زندگی، امید، خنده</span>، شاید نودل یا قهوه، و کمی <span class="highlight">نور کیدرامایی</span> حضور داشته باشن.<br/><br/>
+          رأی نهایی با توئه، آگاسی.
+          <br/>اوپا فقط قاب رو خوشگل‌تر کرده.
+        </p>
+      </div>
+
+      <p class="microcopy" id="mc-invitation"><span class="emoji">💌</span> «پرنسس لازم نیست بی‌نقص باشه؛ همین هلیای واقعی کافیه.»</p>
+
+      <div style="height:20px;"></div>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" id="btn-yes" onclick="handleYes()" aria-label="بله، بررسی پرونده را شروع کنیم">
+          <span>بله، بررسی پرونده رو شروع کنیم</span>
+          <span class="btn-korean">좋아요, 시작해요</span>
+        </button>
+        <button class="btn btn-no" id="btn-no" onclick="handleNo()" aria-label="نه، فعلاً خجالت می‌کشم">
+          <span id="btn-no-text">نه، فعلاً خجالت می‌کشم</span>
+          <span class="btn-korean" id="btn-no-kr">아니요, 아직은...</span>
+        </button>
+      </div>
+
+      <!-- Mini screen for 4th No -->
+      <div class="mini-screen" id="mini-no-screen" aria-live="polite">
+        <div class="mini-screen-icon">🌸</div>
+        <div class="mini-screen-title">رد کردن هم قبوله</div>
+        <div class="mini-screen-body">
+          «اوپا فشار نمیاره. فقط بگو: الان نه، یا یک روز دیگه؟»
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="handleReschedule()" aria-label="یک روز دیگه انتخاب می‌کنم">
+            یک روز دیگه انتخاب می‌کنم 🌙
+          </button>
+          <button class="btn btn-primary" onclick="handleYes()" aria-label="باشه، بریم مرحله بعد">
+            باشه، بریم مرحله بعد ✨
+          </button>
+        </div>
+      </div>
+
+      <p class="microcopy" id="mc-invitation-sub" style="margin-top:16px;"><span class="emoji">⭐</span> «آگاسی مود، اوپا تأیید.»</p>
+    </div>
+
+    <div class="footer-note">«هر انتخابی بکنی، هلیا همچنان هلیاست.»</div>
+  </div>
+
+  <!-- ========================
+       SCREEN 1.5: MINI TRAILER
+  ======================== -->
+  <div class="screen" id="screen-trailer" aria-label="پیش‌نمایش ویدئویی">
+    <div class="screen-trailer-wrap">
+      <div class="screen-title" style="margin-bottom:12px;">پیش‌نمایش سریال جدید دیت سامیار × هلیا</div>
+      <div class="screen-subtitle" style="margin-bottom:20px;direction:ltr;">Samyar × Helya · Upcoming Episode Preview</div>
+      
+      <div class="trailer-player">
+        <button id="trailer-audio-toggle" class="trailer-audio-toggle" onclick="toggleTrailerMute()" style="display:none;" aria-label="صدا">🔇</button>
+        <video class="trailer-video" id="trailer-video" src="assets/optimized/trailer.mp4" playsinline muted style="display:none;"></video>
+        <img class="trailer-screen-img" id="trailer-img" src="" alt="سینماتیک" />
+        <div class="trailer-subtitles">
+          <div class="trailer-sub-fa" id="trailer-sub-fa">...</div>
+          <div class="trailer-sub-kr" id="trailer-sub-kr">...</div>
+        </div>
+      </div>
+      
+      <div class="trailer-btn-row">
+        <button class="btn btn-secondary" onclick="skipTrailer()" style="padding:10px 20px; min-height:40px;">
+          رد کردن پیش‌نمایش (Skip) ➔
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================
+       SCREEN 2: DATE TYPE
+  ======================== -->
+  <div class="screen" id="screen-date-type" aria-label="انتخاب نوع دیت">
+
+    <button class="back-btn" onclick="goBack(2)" aria-label="برگشت">← برگشت</button>
+
+    <div class="card">
+      <div class="card-glow"></div>
+
+      <div class="step-indicator" aria-label="مرحله ۲ از ۴">
+        <div class="step-dot done"></div>
+        <div class="step-dot active"></div>
+        <div class="step-dot"></div>
+        <div class="step-dot"></div>
+      </div>
+
+      <div class="screen-title">آگاسی، نوع قرار رو انتخاب کن</div>
+      <div class="screen-subtitle">어떤 데이트가 좋아요?</div>
+      <div class="screen-pronunciation">«فقط یکی. اوپا قول می‌ده نسخه ترسناک هیچ گزینه‌ای رو فعال نکنه.»</div>
+
+      <!-- K-drama Vibe Selector -->
+      <div style="font-size:0.85rem;color:var(--gold);margin-bottom:10px;text-align:right;font-weight:600;">اتمسفر و لحن دیت (Vibe):</div>
+      <div class="vibe-grid" role="radiogroup" aria-label="انتخاب لحن دیت">
+        <div class="vibe-card" id="vibe-palace" onclick="selectVibe('palace', this)" role="radio" aria-checked="false" tabindex="0">
+          <span class="vibe-card-icon">👑</span>
+          <div class="vibe-card-title">Mr. Queen</div>
+          <div class="vibe-card-fa">فرمان سلطنتی</div>
+          <div class="vibe-card-mood">royal / gold / playful</div>
+        </div>
+        <div class="vibe-card" id="vibe-perfect" onclick="selectVibe('perfect', this)" role="radio" aria-checked="false" tabindex="0">
+          <span class="vibe-card-icon">🌸</span>
+          <div class="vibe-card-title">Perfect Crown</div>
+          <div class="vibe-card-fa">تاج بی‌نقص</div>
+          <div class="vibe-card-mood">soft crown / pink gold / fairytale</div>
+        </div>
+        <div class="vibe-card" id="vibe-filing" onclick="selectVibe('filing', this)" role="radio" aria-checked="false" tabindex="0">
+          <span class="vibe-card-icon">📂</span>
+          <div class="vibe-card-title">Filing for Love</div>
+          <div class="vibe-card-fa">پرونده ثبت عشق</div>
+          <div class="vibe-card-mood">paper / stamp / office romance</div>
+        </div>
+      </div>
+
+      <!-- Crown Meter -->
+      <div class="crown-meter-container" id="crown-meter-box">
+        <div class="crown-meter-header">
+          <div class="crown-meter-label">👑 رضایت‌سنج ملکه (Crown Meter):</div>
+          <div class="crown-meter-value" id="crown-value">۵۰%</div>
+        </div>
+        <div class="crown-meter-track">
+          <div class="crown-meter-fill" id="crown-fill" style="width: 50%;"></div>
+        </div>
+        <div class="crown-meter-commentary" id="crown-commentary">آگاسی هنوز گزینه‌ای انتخاب نکرده… دربار منتظر است. 🌸</div>
+      </div>
+
+      <div class="date-grid" id="date-grid" role="radiogroup" aria-label="نوع دیت">
+        <!-- Cards injected by JS -->
+      </div>
+
+      <div class="selection-feedback" id="selection-feedback" aria-live="polite">
+        یک گزینه انتخاب کن، آگاسی 🌸
+      </div>
+
+      <button class="btn btn-primary" id="btn-next-type" onclick="goToDatePicker()" style="width:100%;display:none;" aria-label="قدم بعدی">
+        <span>قدم بعدی</span>
+        <span class="btn-korean">다음 단계로</span>
+      </button>
+
+      <p class="microcopy" id="mc-date-type"><span class="emoji">✨</span> «قرار نیست چیزی رو ثابت کنی.»</p>
+    </div>
+  </div>
+
+  <!-- ========================
+       SCREEN 3: DATE & TIME
+  ======================== -->
+  <div class="screen" id="screen-datetime" aria-label="انتخاب تاریخ و زمان">
+
+    <button class="back-btn" onclick="goBack(3)" aria-label="برگشت">← برگشت</button>
+
+    <div class="card">
+      <div class="card-glow"></div>
+
+      <div class="step-indicator" aria-label="مرحله ۳ از ۴">
+        <div class="step-dot done"></div>
+        <div class="step-dot done"></div>
+        <div class="step-dot active"></div>
+        <div class="step-dot"></div>
+      </div>
+
+      <div class="screen-title">زمان این پرونده تاریخی رو انتخاب کن</div>
+      <div class="screen-subtitle">날짜와 시간을 골라주세요</div>
+      <div class="screen-pronunciation" style="margin-bottom:20px;">«زمانی که هم تو راحت باشی، هم قرار شبیه قرار باشه.»</div>
+
+      <!-- Calendar -->
+      <div class="calendar-wrapper">
+        <div class="calendar-nav">
+          <button class="calendar-nav-btn" onclick="prevMonth()" aria-label="ماه قبل">›</button>
+          <div class="calendar-month-year" id="cal-month-year"></div>
+          <button class="calendar-nav-btn" onclick="nextMonth()" aria-label="ماه بعد">‹</button>
+        </div>
+        <div class="calendar-grid" id="cal-grid" role="grid" aria-label="تقویم"></div>
+      </div>
+
+      <!-- Time presets -->
+      <div style="font-size:0.85rem;color:var(--gold);margin-bottom:10px;">ساعت دیت:</div>
+      <div class="time-presets" role="radiogroup" aria-label="پیش‌تنظیم ساعت">
+        <button class="time-preset" onclick="selectTimePreset(this,'09:00','صبح پرانرژی')" aria-label="صبح پرانرژی، ۹ تا ۱۱">
+          <div class="time-preset-label">🌅 صبح پرانرژی</div>
+          <div class="time-preset-range">09:00 – 11:00</div>
+        </button>
+        <button class="time-preset" onclick="selectTimePreset(this,'12:00','ظهر راحت')" aria-label="ظهر راحت، ۱۲ تا ۱۵">
+          <div class="time-preset-label">☀️ ظهر راحت</div>
+          <div class="time-preset-range">12:00 – 15:00</div>
+        </button>
+        <button class="time-preset" onclick="selectTimePreset(this,'17:00','عصر کیدرامایی')" aria-label="عصر کیدرامایی، ۱۷ تا ۲۰">
+          <div class="time-preset-label">🌆 عصر کیدرامایی</div>
+          <div class="time-preset-range">17:00 – 20:00</div>
+        </button>
+        <button class="time-preset" onclick="selectTimePreset(this,'20:00','شب فقط سریال')" aria-label="شب فقط سریال، نه ترسناک">
+          <div class="time-preset-label">🌙 شبِ فقط سریال</div>
+          <div class="time-preset-range">20:00 – 22:00</div>
+        </button>
+      </div>
+
+      <div class="time-custom">
+        <label for="custom-time">یا ساعت دلخواه:</label>
+        <input type="time" id="custom-time" onchange="selectCustomTime(this.value)" aria-label="ساعت دلخواه" />
+      </div>
+
+      <button class="btn btn-primary" id="btn-next-datetime" onclick="goToConfirmation()" style="width:100%;display:none;" aria-label="ثبت انتخاب">
+        <span>ثبت انتخاب و ادامه</span>
+        <span class="btn-korean">선택 완료</span>
+      </button>
+
+      <p class="microcopy" id="mc-date-time"><span class="emoji">🕐</span> «بدون فشار، با کمی شوق.»</p>
+    </div>
+  </div>
+
+  <!-- ========================
+       SCREEN 4: CONFIRMATION
+  ======================== -->
+  <div class="screen" id="screen-confirmation" aria-label="تأیید نهایی">
+
+    <button class="back-btn" onclick="goBack(4)" aria-label="برگشت">← برگشت</button>
+
+    <div class="card">
+      <div class="card-glow"></div>
+
+      <div class="step-indicator" aria-label="مرحله ۴ از ۴">
+        <div class="step-dot done"></div>
+        <div class="step-dot done"></div>
+        <div class="step-dot done"></div>
+        <div class="step-dot active"></div>
+      </div>
+
+      <div class="screen-title">پرونده تقریباً آماده مهر اوپاست</div>
+      <div class="screen-subtitle">거의 다 됐어요, 아가씨</div>
+      <div class="screen-pronunciation" style="margin-bottom:20px;">«تقریباً تموم شد، آگاسی»</div>
+
+      <div class="summary-card" id="summary-display" aria-label="خلاصه انتخاب‌ها">
+        <div class="summary-row">
+          <div class="summary-label">آگاسی:</div>
+          <div class="summary-value">هلیا / 아가씨 헬리아</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-label">اتمسفر دیت:</div>
+          <div class="summary-value" id="sum-vibe">پیش‌فرض / 믹س</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-label">نوع دیت:</div>
+          <div class="summary-value" id="sum-type">—</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-label">تاریخ:</div>
+          <div class="summary-value" id="sum-date">—</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-label">ساعت:</div>
+          <div class="summary-value" id="sum-time">—</div>
+        </div>
+      </div>
+
+      <div class="final-message">
+        آگاسی،<br/>
+        این فقط یک قرار نیست؛ یک تلاش کوچیکه برای ساختن چند ساعت که توش <span class="highlight">زندگی، امید و شوق</span>، خیلی ساده و بی‌ادعا حضور داشته باشن.<br/><br/>
+        اوپا آماده‌ست؛ <strong>انتخاب نهایی با تو.</strong>
+      </div>
+
+      <!-- Fallback / Error Container -->
+      <div id="submission-fallback-box" style="display:none; background:rgba(255,111,174,0.1); border:1px solid var(--pink); border-radius:16px; padding:20px; margin-bottom:20px; text-align:right;">
+        <div style="color:var(--pink-light); font-weight:700; font-size:0.95rem; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+          <span>⚠️ خطای ارسال پرونده در دربار</span>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.6; margin-bottom:14px;" id="fallback-error-text">
+          ارسال خودکار به ایمیل با خطا مواجه شد. اما هیچ مشکلی نیست! می‌توانید خلاصه پرونده را کپی کرده یا از دکمه‌های زیر برای ارسال مستقیم در واتساپ یا تلگرام استفاده کنید.
+        </p>
+        <div class="btn-group">
+          <a class="btn btn-primary" id="btn-whatsapp-fallback" href="#" target="_blank" style="background:#25d366; box-shadow:none; font-size:0.85rem; min-height:44px;">
+            💬 ارسال در واتساپ سامیار
+          </a>
+          <a class="btn btn-primary" id="btn-telegram-fallback" href="#" target="_blank" style="background:#0088cc; box-shadow:none; font-size:0.85rem; min-height:44px;">
+            ✈️ ارسال در تلگرام سامیار
+          </a>
+          <button class="btn btn-secondary" onclick="proceedToSuccessManual()" style="font-size:0.85rem; min-height:44px;">
+            📋 کپی اطلاعات و دریافت بلیت قرار
+          </button>
+        </div>
+      </div>
+
+      <div class="btn-group" id="submit-btn-group">
+        <button class="btn btn-primary" id="btn-submit" onclick="submitDate()" aria-label="ثبت نهایی قرار">
+          <span>ثبت نهایی قرار</span>
+          <span class="btn-korean">데이트 확정 💌</span>
+        </button>
+        <button class="btn btn-secondary" id="btn-submit-back" onclick="goBack(4)" aria-label="برگردم و تغییر بدم">
+          <span>برگردم و تغییر بدم</span>
+          <span class="btn-korean">다시 고르기</span>
+        </button>
+      </div>
+
+      <p class="microcopy" id="mc-confirm"><span class="emoji">🌸</span> «همین هلیای واقعی کافیه.»</p>
+    </div>
+  </div>
+
+  <!-- ========================
+       SCREEN 5: SUCCESS
+  ======================== -->
+  <div class="screen" id="screen-success" aria-label="ثبت موفق">
+    <div class="card" style="text-align:center;">
+      <div class="card-glow"></div>
+
+      <div class="success-icon" role="img" aria-label="موفقیت">💌</div>
+      <div class="screen-subtitle">아가씨, 데이트 파일 등록 완료!</div>
+
+      <!-- Cinematic Ticket -->
+      <div class="ticket" id="success-ticket">
+        <!-- Stamp Overlay Container -->
+        <div class="stamp-overlay-wrap" aria-hidden="true">
+          <div class="success-stamp-approved" id="success-stamp">
+            <span class="success-stamp-title">APPROVED</span>
+            <span class="success-stamp-icon">👑</span>
+            <span class="success-stamp-sub">BY AGASSI HELYA</span>
+          </div>
+          <div class="stamp-ripple" id="success-ripple"></div>
+        </div>
+
+        <div class="ticket-header">
+          <div class="ticket-header-bg" id="ticket-hero-bg"></div>
+          <div class="ticket-header-overlay"></div>
+          <div class="ticket-header-content">
+            <div class="ticket-case-id">CASE FILE · HS-LOVE-001</div>
+            <div class="ticket-title">پرونده ثبت شد، آگاسی 💌</div>
+            <div class="ticket-subtitle" id="tkt-instruction-line">این پرونده نه با فشار، با انتخاب آگاسی ثبت شد.</div>
+          </div>
+          <div class="ticket-stamp">
+            <div class="ticket-stamp-icon">💛</div>
+            <div class="ticket-stamp-text">Confirmed<br/>by Agassi</div>
+          </div>
+        </div>
+
+        <div class="ticket-body">
+          <div class="ticket-row">
+            <div class="ticket-label">Agassi</div>
+            <div class="ticket-value">هلیا آگاسی / 아가씨 헬리아</div>
+          </div>
+          <div class="ticket-row">
+            <div class="ticket-label">Vibe</div>
+            <div class="ticket-value" id="tkt-vibe">پیش‌فرض / 믹س</div>
+          </div>
+          <div class="ticket-row">
+            <div class="ticket-label">Date Type</div>
+            <div class="ticket-value" id="tkt-type">—</div>
+          </div>
+          <div class="ticket-row">
+            <div class="ticket-label">تاریخ</div>
+            <div class="ticket-value" id="tkt-date">—</div>
+          </div>
+          <div class="ticket-row">
+            <div class="ticket-label">ساعت</div>
+            <div class="ticket-value" id="tkt-time">—</div>
+          </div>
+          <div class="ticket-row">
+            <div class="ticket-label">Status</div>
+            <div class="ticket-value" id="tkt-status-val" style="color:var(--gold)">✅ Approved · بدون اسپویل</div>
+          </div>
+        </div>
+
+        <div class="ticket-footer">
+          <!-- Decorative QR -->
+          <div class="ticket-qr" aria-hidden="true" id="ticket-qr"></div>
+          <!-- Mini collage -->
+          <div class="ticket-collage">
+            <div class="ticket-thumb" id="tkt-thumb-1"><div class="ticket-thumb-label">Mr. Queen</div></div>
+            <div class="ticket-thumb" id="tkt-thumb-2"><div class="ticket-thumb-label">تاج بی‌نقص</div></div>
+            <div class="ticket-thumb" id="tkt-thumb-3"><div class="ticket-thumb-label">Filing</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="final-message" style="text-align:right;">
+        اوپا پیام رو دریافت کرد و رسماً موظفه این قرار رو <strong>بدون اسپویل، بدون ترسوندن</strong>، و با مقدار مناسبی شوق برگزار کنه.<br/><br/>
+        <span class="highlight">رادیو هلیا فعلاً روی موج لبخند تنظیم شد. 📻</span>
+      </div>
+
+      <div class="countdown-box">
+        <div class="countdown-label">⭐ تا دیدار:</div>
+        <div class="countdown-display">
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-days">--</span>
+            <div class="countdown-unit-label">روز</div>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-hours">--</span>
+            <div class="countdown-unit-label">ساعت</div>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-mins">--</span>
+            <div class="countdown-unit-label">دقیقه</div>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-secs">--</span>
+            <div class="countdown-unit-label">ثانیه</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="microcopy" id="mc-success" style="margin-top:0;"><span class="emoji">🌙</span> «بدون اسپویل، فقط یک دعوت خاص.»</p>
+
+      <!-- Fallback copy button (shown if email failed) -->
+      <button class="btn btn-secondary" id="btn-copy-summary" onclick="copySummary()" style="width:100%;margin-top:12px;display:none;" aria-label="کپی خلاصه برای تلگرام">
+        📋 کپی خلاصه برای ارسال در تلگرام
+      </button>
+    </div>
+
+    <div class="footer-note">
+      «نه ترسناک، نه سنگین، نه اجباری. فقط خاص.» ✨
+    </div>
+  </div>
+
+
+  <!-- Royal Court Objection Scroll Modal -->
+  <div class="royal-decree-overlay" id="royal-decree-overlay" role="dialog" aria-modal="true" aria-labelledby="decree-title-el">
+    <div class="royal-decree-scroll">
+      <div class="decree-header">ROYAL AGASSI COURT DECREE</div>
+      <div class="decree-title" id="decree-title-el">فرمان دربار سلطنتی</div>
+      <div class="decree-body" id="decree-body-el">
+        اعتراض رسمی ثبت شد.
+      </div>
+      
+      <!-- Step 2 and 4 choices -->
+      <div class="decree-choices" id="decree-choices-el" style="display:none;">
+        <!-- Options injected in JS -->
+      </div>
+      
+      <!-- Close btn / Action button -->
+      <button class="btn btn-primary" id="decree-close-btn" onclick="closeDecree()" style="width:100%;margin-top:16px;">
+        رویت شد و مطاع است 📜
+      </button>
+      
+      <div class="decree-stamp" id="decree-stamp-el">
+        <div class="decree-stamp-icon">🔴</div>
+        <div class="decree-stamp-text">OBJECTION REGISTERED</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Radio Helya Floating Player -->
+  <div class="radio-helya-widget" id="radio-widget" aria-label="رادیو هلیا">
+    <button class="radio-toggle-btn" id="radio-toggle-btn" onclick="toggleRadioExpand()" aria-label="باز کردن رادیو هلیا">📻</button>
+    <div class="radio-helya-body">
+      <div class="radio-header-row">
+        <div class="radio-title">Radio Helya 📻</div>
+        <canvas class="radio-eq-canvas" id="radio-eq-canvas" width="60" height="16"></canvas>
+      </div>
+      <div class="radio-controls">
+        <button class="radio-btn" id="radio-play-btn" onclick="togglePlayRadio()" aria-label="پخش">▶</button>
+        <select class="radio-wave-select" id="radio-wave-select" onchange="changeRadioWave(this.value)" aria-label="انتخاب موج رادیو">
+          <option value="smile">📻 موج لبخند</option>
+          <option value="noodle">🍜 موج نودل</option>
+          <option value="spoiler">🎬 موج بدون اسپویل</option>
+        </select>
+        <button class="radio-btn" onclick="toggleMuteRadio()" id="radio-mute-btn" aria-label="قطع صدا" style="font-size: 10px;">🔊</button>
+      </div>
+      <div class="radio-wave-info" id="radio-wave-info">آگاسی خوش آمدید.</div>
+    </div>
+  </div>
+
+  <!-- Debug Drawer Panel -->
+  <div class="debug-panel" id="debug-panel" role="region" aria-label="پنل تست و دیباگ">
+    <div class="debug-header">
+      <span class="debug-title">DEVELOPER DEBUG & CHEAT PANEL (Ctrl + Shift + E)</span>
+      <button class="debug-close" onclick="toggleDebugPanel()">✕ CLOSE</button>
+    </div>
+    <div class="debug-body">
+      <div class="debug-grid">
+        <!-- Section 1: Navigation / Cheats -->
+        <div class="debug-section">
+          <div class="debug-section-title">Screen Selector (Cheats)</div>
+          <div class="debug-btn-group">
+            <button class="debug-btn" onclick="cheatScreen(0)">0: Loading</button>
+            <button class="debug-btn" onclick="cheatScreen(1)">1: Invitation</button>
+            <button class="debug-btn" onclick="cheatScreen(2)">2: Date Vibe/Type</button>
+            <button class="debug-btn" onclick="cheatScreen(3)">3: Date & Time</button>
+            <button class="debug-btn" onclick="cheatScreen(4)">4: Confirmation</button>
+            <button class="debug-btn" onclick="cheatScreen(5)">5: Success Page</button>
+          </div>
+          <div class="debug-switch-row" style="margin-top:14px;">
+            <span>Mock Email Failure:</span>
+            <input type="checkbox" id="dbg-mock-fail" onchange="toggleMockEmailFailure(this.checked)" />
+          </div>
+        </div>
+        
+        <!-- Section 2: Environment -->
+        <div class="debug-section">
+          <div class="debug-section-title">Environment & EmailJS SDK</div>
+          <div class="debug-info-row">
+            <span>Current URL:</span>
+            <span class="debug-val" id="dbg-url" style="max-width:180px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; display:inline-block;">-</span>
+          </div>
+          <div class="debug-info-row">
+            <span>URL Origin:</span>
+            <span class="debug-val" id="dbg-origin">-</span>
+          </div>
+          <div class="debug-info-row">
+            <span>Protocol:</span>
+            <span class="debug-val" id="dbg-protocol">-</span>
+          </div>
+          <div class="debug-info-row">
+            <span>EmailJS Loaded:</span>
+            <span class="debug-val" id="dbg-sdk-loaded">Checking...</span>
+          </div>
+          <div class="debug-info-row">
+            <span>EmailJS Initialized:</span>
+            <span class="debug-val" id="dbg-sdk-init">No</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="debug-grid">
+        <!-- Section 3: Parameters -->
+        <div class="debug-section">
+          <div class="debug-section-title">Config Details</div>
+          <div class="debug-info-row">
+            <span>Public Key:</span>
+            <span class="debug-val" id="dbg-pub-key">-</span>
+          </div>
+          <div class="debug-info-row">
+            <span>Service ID:</span>
+            <span class="debug-val" id="dbg-service-id">-</span>
+          </div>
+          <div class="debug-info-row">
+            <span>Template ID:</span>
+            <span class="debug-val" id="dbg-template-id">-</span>
+          </div>
+          <div class="debug-info-row">
+            <span>Last Params:</span>
+            <span class="debug-val" id="dbg-last-params" style="max-width:140px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; display:inline-block;">None</span>
+          </div>
+          <button class="debug-btn" onclick="sendTestEmailDirect()" style="margin-top:10px; width:100%; background:#7A1F4D;">
+            Send Test Email 📧
+          </button>
+        </div>
+
+        <!-- Section 4: Logs & Status -->
+        <div class="debug-section">
+          <div class="debug-section-title">EmailJS Logs & Status</div>
+          <div class="debug-info-row">
+            <span>Last Response:</span>
+            <span class="debug-val" id="dbg-last-response" style="max-width:140px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; display:inline-block;">None</span>
+          </div>
+          <div class="debug-info-row">
+            <span>Last Error:</span>
+            <span class="debug-val" id="dbg-last-error" style="color:#ff6666; max-width:140px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; display:inline-block;">None</span>
+          </div>
+          <div class="debug-log-area" id="dbg-logs-box" style="height:70px;">No logs generated yet. Submit date to see activity.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+/* =============================================================================
+   GLOBAL ERROR LOGGING & ACCESSIBILITY BYPASS
+   ============================================================================= */
+window.addEventListener("error", (event) => {
+  console.error("[GLOBAL ERROR]", {
+    message: event.message,
+    source: event.filename,
+    line: event.lineno,
+    column: event.colno,
+    error: event.error
+  });
+});
+
+window.addEventListener("unhandledrejection", (event) => {
+  console.error("[UNHANDLED PROMISE]", event.reason);
+});
+
+  /* =============================================
+     CONFIG — EmailJS
+  ============================================= */
+  const EMAILJS_PUBLIC_KEY  = "iyMhP8mA9sEN2GAsi";
+  const EMAILJS_SERVICE_ID  = "service_ysfg6ge";
+  const EMAILJS_TEMPLATE_ID = "template_jyvx4po";
+  const SAMYAR_EMAIL        = "samyar.vahabzadeh@gmail.com";
+
+  /* =============================================
+     KDRAMA ASSET MANIFEST
+  ============================================= */
+  const KDRAMA_ASSETS = {
+    mrQueen: {
+      title: 'Mr. Queen', faTitle: 'آقای ملکه', vibe: 'royal-gold-playful',
+      fallbackClass: 'fallback-mr-queen',
+      images: [
+        'assets/optimized/mr-queen/hero-01.jpg',
+        'assets/optimized/mr-queen/scene-01.jpg',
+        'assets/optimized/mr-queen/scene-02.jpg'
+      ]
+    },
+    perfectCrown: {
+      title: 'Perfect Crown', faTitle: 'تاج بی‌نقص', vibe: 'premium-fairytale-crown',
+      fallbackClass: 'fallback-perfect-crown',
+      images: [
+        'assets/optimized/perfect-crown/hero-01.jpg',
+        'assets/optimized/perfect-crown/scene-01.jpg',
+        'assets/optimized/perfect-crown/scene-02.jpg'
+      ]
+    },
+    filingForLove: {
+      title: 'Filing for Love', faTitle: 'ثبت عشق', vibe: 'case-file-romance',
+      fallbackClass: 'fallback-filing-love',
+      images: [
+        'assets/optimized/filing-for-love/hero-01.jpg',
+        'assets/optimized/filing-for-love/scene-01.jpg',
+        'assets/optimized/filing-for-love/scene-02.jpg'
+      ]
+    },
+    easterEggs: {
+      title: 'Easter Eggs', faTitle: 'جزئیات مخفی', vibe: 'hidden-kdrama-memory',
+      fallbackClass: 'fallback-easter',
+      images: [
+        'assets/optimized/easter-eggs/easter-01.jpg'
+      ]
+    }
+  };
+
+  /* =============================================
+     ASSET UTILITIES
+  ============================================= */
+  function preloadImage(src) {
+    return new Promise(resolve => {
+      const img = new Image();
+      img.onload  = () => resolve({ src, ok: true  });
+      img.onerror = () => { console.warn('⚠️ Asset fallback:', src); resolve({ src, ok: false }); };
+      img.src = src;
+    });
+  }
+
+  function applySafeBackgroundImage(element, src, fallbackClass) {
+    preloadImage(src).then(({ ok }) => {
+      if (ok) {
+        element.style.backgroundImage = `url('${src}')`;
+        element.classList.add('loaded');
+      } else {
+        element.classList.add(fallbackClass, 'loaded');
+      }
+    });
+  }
+
+  function applySafeImgSrc(imgEl, src, fallbackClass) {
+    preloadImage(src).then(({ ok }) => {
+      if (ok) {
+        imgEl.src = src;
+        imgEl.onload = () => imgEl.classList.add('loaded');
+        imgEl.src = src;
+      } else {
+        const parent = imgEl.closest('.film-frame, .postcard, .ticket-thumb') || imgEl.parentElement;
+        if (parent) parent.classList.add(fallbackClass);
+      }
+    });
+  }
+
+  /* =============================================
+     DATE TYPE DATA
+  ============================================= */
+  const DATE_TYPES = [
+    { id:'cafe',     icon:'☕', title:'کافه‌گردی',      kr:'카페 데이트',     pron:'کافه دیتو',          desc:'قهوه، حرف، کمی خنده، بدون بازجویی.', feedback:'پرونده کافه با موفقیت ثبت شد. ☕', sceneTitle:'کافه‌گردی', sceneText:'این مود برای حرفهای نیمهجدی و خندههای کامل مناسبه.', gradient:'linear-gradient(135deg, #4A2E1B, #8C5333)', satisfaction: 75, tktNote: 'یک فنجان صمیمیت و قهوه بدون عجله' },
+    { id:'noodle',   icon:'🍜', title:'نودل آسیایی',    kr:'라면 데이트',     pron:'رامیون دیتو',        desc:'برای وقتی دلت نودل می‌خواد.', feedback:'پرونده نودل رسمی شد. آگاسی گفت نودل؛ جهان پاسخ داد. 🍜', sceneTitle:'نودل‌خوری', sceneText:'آگاسی گفت نودل؛ جهان پاسخ داد.', gradient:'linear-gradient(135deg, #8C1D1D, #D25E2D)', satisfaction: 95, tktNote: 'قرار نودل تند به سبک سریال‌های عاشقانه' },
+    { id:'cooking',  icon:'🍳', title:'آشپزی دونفره',   kr:'같이 요리하기',    pron:'کَچی یوریهاگی',     desc:'یک تجربه ساختنی؛ نه فقط خوردنی.', feedback:'یک تجربه ساختنی آماده ثبت است. 🍳', sceneTitle:'آشپزی دونفره', sceneText:'همکاری در پخت یک غذای هیجان‌انگیز.', gradient:'linear-gradient(135deg, #C28D0E, #D4AF37)', satisfaction: 85, tktNote: 'همکاری آشپزخانه درباری با نظارت ملکه' },
+    { id:'gallery',  icon:'🎨', title:'گالری‌گردی',     kr:'갤러리 데이트',   pron:'گَلِری دیتو',         desc:'برای چشم‌های گرافیست آگاسی.', feedback:'چشم‌های گرافیست آگاسی approve کرد. 🎨', sceneTitle:'گالری‌گردی هنر', sceneText:'چشمهای گرافیست آگاسی وارد عمل شد.', gradient:'linear-gradient(135deg, #4B1A7A, #8D41C4)', satisfaction: 90, tktNote: 'بازدید هنری شیک متناسب با سلیقه آگاسی' },
+    { id:'nature',   icon:'🌲', title:'طبیعت سبک',      kr:'산책 데이트',     pron:'سانچک دیتو',         desc:'هوای تازه، قدم زدن، حرف‌های آرام.', feedback:'پرونده طبیعت‌گردی باز شد. 🌲', sceneTitle:'طبیعت‌گردی', sceneText:'قدم زدن زیر سایه درخت‌ها، هوای خوب، آرامش.', gradient:'linear-gradient(135deg, #1B5E20, #4CAF50)', satisfaction: 80, tktNote: 'پیاده‌روی آرام‌بخش و اکسیژن در قلب طبیعت' },
+    { id:'sports',   icon:'🎾', title:'ورزش / تنیس',   kr:'스포츠 데이트',   pron:'سپوتسو دیتو',        desc:'برای وقتی انرژی صبحی فعال شده.', feedback:'انرژی صبحگاهی شناسایی شد. اوپا باید کفش مناسب بپوشه. 🎾', sceneTitle:'ورزش و تنیس', sceneText:'یک رقابت دوستانه و پرانرژی.', gradient:'linear-gradient(135deg, #0D47A1, #2196F3)', satisfaction: 70, tktNote: 'مبارزه ورزشی پرانرژی با رعایت احترام ملکه' },
+    { id:'pottery',  icon:'🏺', title:'سفالگری',        kr:'도자기 만들기',   pron:'دوجاگی ماندولگی',    desc:'چیزی بسازیم که بهش بخندیم یا افتخار کنیم.', feedback:'چیزی می‌سازیم. احتمالاً قشنگ. شاید هم خنده‌دار. 🏺', sceneTitle:'کارگاه سفالگری', sceneText:'گل بازی هنری. ساختن چیزی ماندگار با دست‌های خودمان.', gradient:'linear-gradient(135deg, #795548, #A0522D)', satisfaction: 88, tktNote: 'خلق ظروف سفالی خاص در کارگاه هنر' },
+    { id:'cinema',   icon:'🎬', title:'سینما بی‌اسپویل',kr:'영화 데이트',     pron:'یونگهوا دیتو',       desc:'اوپا تعهد می‌دهد اسپویل نکند.', feedback:'هشدار: اسپویل ممنوع. حتی اگر احساسات غلیان پیدا کند. 🎬', sceneTitle:'سینما بی‌اسپویل', sceneText:'اوپا تعهد میدهد اسپویل نکند. حداقل تلاشش را میکند.', gradient:'linear-gradient(135deg, #311B92, #673AB7)', satisfaction: 80, tktNote: 'تماشای فیلم بدون کوچکترین اسپویل و تعهد کامل' },
+    { id:'escape',   icon:'🔐', title:'اسکیپ‌روم',      kr:'탈출 게임',       pron:'تالچول گیم',         desc:'فقط نسخه معمایی/فانتزی. نه تاریک، نه ترسناک.', feedback:'نسخه غیرترسناک فعال شد. تاریکی حذف شد. 🔐', sceneTitle:'اسکیپ‌روم فانتزی', sceneText:'حل کردن معماها کنار هم. هیجان کنترل‌شده، خنده و هم‌فکری.', gradient:'linear-gradient(135deg, #006064, #00838F)', satisfaction: 78, tktNote: 'حل معما در اتاق فرار روشن و فانتزی' },
+    { id:'surprise', icon:'🎁', title:'سورپرایزم کن',   kr:'너에게 맡길게',    pron:'نوئه‌گه مَتگیلگه',   desc:'اوپا حق دارد خلاقیت کنترل‌شده خرج کند.', feedback:'اوپا مسئولیت خلاقیت را با ترس و لرز پذیرفت. 🎁', sceneTitle:'سورپرایز اوپا', sceneText:'اوپا مسئولیت خلاقیت را با ترس و لرز پذیرفت.', gradient:'linear-gradient(135deg, #880E4F, #E91E63)', satisfaction: 100, tktNote: 'سورپرایز ویژه با برنامه‌ریزی صد درصد سامیار' }
+  ];
+
+  /* =============================================
+     STATE
+  ============================================= */
+  let currentScreen = 0;
+  let noCount = 0;
+  let selectedDateType = null;
+  let selectedDate = null;   // JS Date object
+  let selectedTime = null;   // "HH:MM"
+  let selectedTimeLabel = '';
+  let calYear, calMonth;
+  let logoClickCount = 0;
+  let logoClickTimer = null;
+  let countdownInterval = null;
+
+  // Interaction and trailer states
+  let trialStage = 0;
+  let selectedVibe = 'perfect'; // default
+  let mockEmailFailure = false;
+  let trailerIdx = 0;
+  let trailerTimer = null;
+  let trailerVideoPlayable = false;
+
+  // Audio state
+  let audioCtx = null;
+  let synthOsc = null;
+  let synthGain = null;
+  let eqAnimFrame = null;
+  let isMuted = false;
+  let currentTrackName = 'سکوت';
+
+  // Subtitles for Cinematic Trailer
+  const TRAILER_SCENES = [
+    {
+      img: 'assets/optimized/mr-queen/hero-01.jpg',
+      fallback: 'fallback-mr-queen',
+      fa: 'در دربار سلطنتی عشق، قانونی جز خواست ملکه جاری نیست...',
+      kr: '연애의 왕실 법정에서는 아가씨의 뜻만이 법이다...',
+      dur: 2800
+    },
+    {
+      img: 'assets/optimized/perfect-crown/hero-01.jpg',
+      fallback: 'fallback-perfect-crown',
+      fa: 'حتی اگر اوپا در این مسیر اشتباه کند، یک تاج بی‌نقص برای جبران آماده است.',
+      kr: '오빠가 실수하더라도, 완벽한 왕관이 준비되어 있습니다.',
+      dur: 3000
+    },
+    {
+      img: 'assets/optimized/filing-for-love/hero-01.jpg',
+      fallback: 'fallback-filing-love',
+      fa: 'پرونده رسمی ثبت قرار باز شده... رأی نهایی با شماست، آگاسی.',
+      kr: '공식 데이트 파일이 열렸습니다. 최종 결정은 아가씨 몫입니다.',
+      dur: 3200
+    }
+  ];
+
+  // Persian month names
+  const PERSIAN_MONTHS = ['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+  const PERSIAN_WEEKDAYS = ['ش','ی','د','س','چ','پ','ج']; // Sat-based RTL
+
+  /* =============================================
+     STARS
+  ============================================= */
+  function createStars() {
+    const container = document.getElementById('stars');
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random() * 2.5 + 0.5;
+      star.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random()*100}%;
+        top:${Math.random()*100}%;
+        --dur:${2+Math.random()*4}s;
+        --delay:${-Math.random()*4}s;
+        --min-op:${0.05+Math.random()*0.1};
+        --max-op:${0.4+Math.random()*0.5};
+      `;
+      container.appendChild(star);
+    }
+  }
+
+  /* =============================================
+     LOADING SEQUENCE
+  ============================================= */
+  const LOADING_MSGS = [
+    { fa:'در حال باز کردن پرونده آگاسی…', kr:'아가씨 파일 여는 중...' },
+    { fa:'اوپا دارد دکمه بله را برق می‌اندازد…', kr:'오빠가 YES 버튼을 준비 중...' },
+    { fa:'بدون اسپویل، فقط یک دعوت خاص…', kr:'스포일러 없이, 특별한 초대만.' },
+  ];
+
+  async function runLoadingSequence() {
+    const container = document.getElementById('loading-messages');
+    const bar = document.getElementById('progress-bar');
+
+    for (let i = 0; i < LOADING_MSGS.length; i++) {
+      const msg = LOADING_MSGS[i];
+      container.innerHTML = `
+        <div class="loading-msg show">
+          <div class="loading-msg-fa">${msg.fa}</div>
+          <div class="loading-msg-kr">${msg.kr}</div>
+        </div>`;
+      bar.style.width = `${((i+1)/LOADING_MSGS.length)*100}%`;
+      await sleep(900);
+    }
+    await sleep(500);
+    showScreen(1);
+  }
+
+  /* =============================================
+     SCREEN NAVIGATION
+  ============================================= */
+  function showScreen(num) {
+    document.querySelectorAll('.screen').forEach(s => {
+      s.classList.remove('active');
+    });
+    const screens = ['screen-loading','screen-invitation','screen-date-type','screen-datetime','screen-confirmation','screen-success','screen-trailer'];
+    const target = document.getElementById(screens[num]);
+    if (target) {
+      target.classList.add('active');
+      target.scrollIntoView({ behavior:'smooth', block:'center' });
+    }
+    currentScreen = num;
+
+    if (num === 2) renderDateGrid();
+    if (num === 3) initCalendar();
+    if (num === 4) renderConfirmation();
+  }
+
+  function goBack(fromScreen) {
+    showScreen(fromScreen - 1);
+  }
+
+  /* =============================================
+     INVITATION SCREEN — YES/NO
+  ============================================= */
+  /* Duplicate handleYes commented out */
+
+  /* Duplicate handleNo commented out */
+
+  function handleReschedule() {
+    showToast('رادیو هلیا روی موج «بعداً» تنظیم شد. اوپا منتظر می‌مونه. 🌙');
+    // Reset and close gracefully
+    document.getElementById('mini-no-screen').classList.remove('active');
+    const btnYes = document.getElementById('btn-yes');
+    const btnNo = document.getElementById('btn-no');
+    btnYes.style.display = '';
+    btnNo.style.display = '';
+    noCount = 0;
+    // Reset btn-no styles
+    const btnNoText = document.getElementById('btn-no-text');
+    const btnNoKr = document.getElementById('btn-no-kr');
+    btnNoText.textContent = 'نه، فعلاً خجالت می‌کشم';
+    btnNoKr.textContent = '아니요, 아직은...';
+    document.getElementById('btn-no').style.fontSize = '';
+    document.getElementById('btn-no').style.padding = '';
+    document.getElementById('btn-yes').style.transform = '';
+  }
+
+  /* =============================================
+     DATE TYPE GRID
+  ============================================= */
+  function renderDateGrid() {
+    const grid = document.getElementById('date-grid');
+    grid.innerHTML = '';
+    DATE_TYPES.forEach(dt => {
+      const isSelected = selectedDateType && selectedDateType.id === dt.id;
+      const card = document.createElement('div');
+      card.className = 'date-card' + (isSelected ? ' selected' : '');
+      card.setAttribute('role', 'radio');
+      card.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+      card.setAttribute('aria-label', dt.title);
+      card.setAttribute('tabindex', '0');
+      card.innerHTML = `
+        <span class="date-card-icon">${dt.icon}</span>
+        <div class="date-card-title">${dt.title}</div>
+        <div class="date-card-kr">${dt.kr}</div>
+        <div class="date-card-pronunciation">${dt.pron}</div>
+        <div class="date-card-desc">${dt.desc}</div>
+        <div class="date-card-scene" style="background: ${dt.gradient || 'var(--purple-dark)'};">
+          <p class="scene-text">« ${dt.sceneText || dt.desc} »</p>
+          <button class="btn-keep-mode" onclick="keepThisMode(event, '${dt.id}')">این مودو نگه دار 💛</button>
+        </div>
+      `;
+      card.onclick = () => toggleCardExpand(card, dt);
+      card.onkeydown = (e) => { if(e.key==='Enter'||e.key===' ') toggleCardExpand(card, dt); };
+      grid.appendChild(card);
+    });
+  }
+
+  function selectDateType(dt, cardEl) {
+    selectedDateType = dt;
+    document.querySelectorAll('.date-card').forEach(c => {
+      c.classList.remove('selected');
+      c.setAttribute('aria-checked','false');
+    });
+    cardEl.classList.add('selected');
+    cardEl.setAttribute('aria-checked','true');
+
+    // Feedback
+    document.getElementById('selection-feedback').textContent = dt.feedback;
+
+    // Show next button
+    document.getElementById('btn-next-type').style.display = '';
+
+    // Dynamic mood
+    applyMood(dt.id);
+
+    // Easter Eggs
+    triggerDateTypeEasterEgg(dt.id);
+  }
+
+  function triggerDateTypeEasterEgg(id) {
+    const grid = document.getElementById('date-grid');
+    if (id === 'noodle') {
+      // Float emoji
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          const el = document.createElement('div');
+          el.className = 'float-emoji';
+          el.textContent = '🍜';
+          el.style.left = (20 + Math.random()*60) + '%';
+          el.style.animationDuration = (2 + Math.random()) + 's';
+          document.body.appendChild(el);
+          setTimeout(() => el.remove(), 3500);
+        }, i * 400);
+      }
+    } else if (id === 'gallery') {
+      grid.classList.add('gallery-frame-effect');
+      setTimeout(() => grid.classList.remove('gallery-frame-effect'), 4000);
+    } else if (id === 'cinema') {
+      showToast('بدون اسپویل، حتی اگر احساسات غلیان پیدا کند. 🎬');
+    } else if (id === 'surprise') {
+      showEasterEgg('اوپا مسئولیت خلاقیت را با ترس و لرز پذیرفت. 🎁');
+    }
+  }
+
+  /* =============================================
+     CALENDAR (Jalali)
+  ============================================= */
+  function initCalendar() {
+    const now = new Date();
+    // Convert today to Jalali
+    if (typeof jalaali !== 'undefined') {
+      const j = jalaali.toJalaali(now.getFullYear(), now.getMonth()+1, now.getDate());
+      calYear = j.jy;
+      calMonth = j.jm;
+    } else {
+      calYear = now.getFullYear();
+      calMonth = now.getMonth() + 1;
+    }
+    renderCalendar();
+    checkDateTimeComplete();
+  }
+
+  function renderCalendar() {
+    const grid = document.getElementById('cal-grid');
+    const monthYearEl = document.getElementById('cal-month-year');
+    grid.innerHTML = '';
+
+    const useJalali = typeof jalaali !== 'undefined';
+    const now = new Date();
+
+    if (useJalali) {
+      // Jalali calendar
+      monthYearEl.textContent = `${PERSIAN_MONTHS[calMonth-1]} ${toPersianNum(calYear)}`;
+
+      // Headers: Sat Sun Mon Tue Wed Thu Fri
+      const dayHeaders = ['ش','ی','د','س','چ','پ','ج'];
+      dayHeaders.forEach(d => {
+        const h = document.createElement('div');
+        h.className = 'cal-day-header';
+        h.textContent = d;
+        grid.appendChild(h);
+      });
+
+      // First day of this Jalali month in Gregorian
+      const firstGreg = jalaali.toGregorian(calYear, calMonth, 1);
+      const firstDate = new Date(firstGreg.gy, firstGreg.gm-1, firstGreg.gd);
+      // Day of week (0=Sun, 6=Sat), convert to Jalali week (Sat=0)
+      let firstDow = (firstDate.getDay() + 1) % 7; // Sat=0, Sun=1...
+
+      // Days in month
+      const daysInMonth = jalaali.jalaaliMonthLength(calYear, calMonth);
+
+      // Today in Jalali
+      const todayJ = jalaali.toJalaali(now.getFullYear(), now.getMonth()+1, now.getDate());
+
+      // Empty cells
+      for (let i = 0; i < firstDow; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'cal-day empty';
+        grid.appendChild(empty);
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const greg = jalaali.toGregorian(calYear, calMonth, day);
+        const dateObj = new Date(greg.gy, greg.gm-1, greg.gd);
+        const isPast = dateObj < new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const isToday = (calYear===todayJ.jy && calMonth===todayJ.jm && day===todayJ.jd);
+        const isSelected = selectedDate &&
+          selectedDate.getFullYear()===dateObj.getFullYear() &&
+          selectedDate.getMonth()===dateObj.getMonth() &&
+          selectedDate.getDate()===dateObj.getDate();
+
+        const cell = document.createElement('div');
+        cell.className = 'cal-day' +
+          (isPast ? ' disabled' : '') +
+          (isToday && !isPast ? ' today' : '') +
+          (isSelected ? ' selected' : '');
+        cell.textContent = toPersianNum(day);
+        cell.setAttribute('role', 'gridcell');
+        cell.setAttribute('aria-label', `${day} ${PERSIAN_MONTHS[calMonth-1]} ${calYear}`);
+        if (!isPast) {
+          cell.onclick = () => selectCalDay(dateObj, cell, `${toPersianNum(day)} ${PERSIAN_MONTHS[calMonth-1]} ${toPersianNum(calYear)}`);
+          cell.setAttribute('tabindex', '0');
+          cell.onkeydown = (e) => { if(e.key==='Enter') selectCalDay(dateObj, cell, `${toPersianNum(day)} ${PERSIAN_MONTHS[calMonth-1]} ${toPersianNum(calYear)}`); };
+        } else {
+          cell.setAttribute('aria-disabled','true');
+        }
+        grid.appendChild(cell);
+      }
+    } else {
+      // Gregorian fallback
+      const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      monthYearEl.textContent = `${monthNames[calMonth-1]} ${calYear}`;
+      const dayHeaders = ['S','M','T','W','T','F','S'];
+      dayHeaders.forEach(d => {
+        const h = document.createElement('div');
+        h.className = 'cal-day-header';
+        h.textContent = d;
+        grid.appendChild(h);
+      });
+      const firstDate = new Date(calYear, calMonth-1, 1);
+      const firstDow = firstDate.getDay();
+      const daysInMonth = new Date(calYear, calMonth, 0).getDate();
+      for (let i = 0; i < firstDow; i++) {
+        const e = document.createElement('div');
+        e.className = 'cal-day empty';
+        grid.appendChild(e);
+      }
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateObj = new Date(calYear, calMonth-1, day);
+        const isPast = dateObj < new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const isToday = dateObj.toDateString() === now.toDateString();
+        const isSelected = selectedDate && selectedDate.toDateString() === dateObj.toDateString();
+        const cell = document.createElement('div');
+        cell.className = 'cal-day' +
+          (isPast ? ' disabled' : '') +
+          (isToday ? ' today' : '') +
+          (isSelected ? ' selected' : '');
+        cell.textContent = day;
+        if (!isPast) {
+          cell.onclick = () => selectCalDay(dateObj, cell, `${day} ${monthNames[calMonth-1]} ${calYear}`);
+        }
+        grid.appendChild(cell);
+      }
+    }
+  }
+
+  function selectCalDay(dateObj, cell, label) {
+    selectedDate = dateObj;
+    document.querySelectorAll('.cal-day').forEach(c => c.classList.remove('selected'));
+    cell.classList.add('selected');
+    checkDateTimeComplete();
+  }
+
+  function prevMonth() {
+    calMonth--;
+    if (calMonth < 1) { calMonth = 12; calYear--; }
+    renderCalendar();
+  }
+
+  function nextMonth() {
+    calMonth++;
+    if (calMonth > 12) { calMonth = 1; calYear++; }
+    renderCalendar();
+  }
+
+  function selectTimePreset(btn, time, label) {
+    selectedTime = time;
+    selectedTimeLabel = label;
+    document.querySelectorAll('.time-preset').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('custom-time').value = time;
+    checkDateTimeComplete();
+  }
+
+  function selectCustomTime(val) {
+    selectedTime = val;
+    selectedTimeLabel = val;
+    document.querySelectorAll('.time-preset').forEach(b => b.classList.remove('selected'));
+    checkDateTimeComplete();
+  }
+
+  function checkDateTimeComplete() {
+    const btn = document.getElementById('btn-next-datetime');
+    if (selectedDate && selectedTime) {
+      btn.style.display = '';
+    } else {
+      btn.style.display = 'none';
+    }
+  }
+
+  function goToDatePicker() {
+    if (!selectedDateType) {
+      showToast('یک گزینه انتخاب کن، آگاسی 🌸');
+      return;
+    }
+    showScreen(3);
+  }
+
+  function goToConfirmation() {
+    if (!selectedDate || !selectedTime) {
+      showToast('تاریخ و ساعت هر دو لازم‌اند، آگاسی. 🗓️');
+      return;
+    }
+    showScreen(4);
+  }
+
+  /* =============================================
+     CONFIRMATION
+  ============================================= */
+  /* Duplicate renderConfirmation commented out */
+
+  /* =============================================
+     EMAILJS SUBMIT
+  ============================================= */
+  /* Duplicate submitDate commented out */
+
+  /* Duplicate goToSuccess commented out */
+
+  /* =============================================
+     SUCCESS TICKET BUILD
+  ============================================= */
+  function buildSuccessTicket() {
+    // Fill text fields
+    const tktType = document.getElementById('tkt-type');
+    const tktDate = document.getElementById('tkt-date');
+    const tktTime = document.getElementById('tkt-time');
+    if (tktType) tktType.textContent = selectedDateType ? `${selectedDateType.icon} ${selectedDateType.title}` : '—';
+    if (tktDate) tktDate.textContent = document.getElementById('sum-date').textContent;
+    if (tktTime) tktTime.textContent = selectedTime || '—';
+
+    // Hero background (filing-for-love hero or mr-queen hero)
+    const heroBg = document.getElementById('ticket-hero-bg');
+    if (heroBg) applySafeBackgroundImage(heroBg, KDRAMA_ASSETS.filingForLove.images[0], KDRAMA_ASSETS.filingForLove.fallbackClass);
+
+    // Mini thumbnails
+    const thumbData = [
+      { id:'tkt-thumb-1', img: KDRAMA_ASSETS.mrQueen.images[0],        fc: KDRAMA_ASSETS.mrQueen.fallbackClass },
+      { id:'tkt-thumb-2', img: KDRAMA_ASSETS.perfectCrown.images[0],   fc: KDRAMA_ASSETS.perfectCrown.fallbackClass },
+      { id:'tkt-thumb-3', img: KDRAMA_ASSETS.filingForLove.images[1],  fc: KDRAMA_ASSETS.filingForLove.fallbackClass },
+    ];
+    thumbData.forEach(({ id, img, fc }) => {
+      const container = document.getElementById(id);
+      if (!container) return;
+      const im = document.createElement('img');
+      im.className = 'ticket-thumb-img';
+      im.alt = '';
+      container.insertBefore(im, container.firstChild);
+      applySafeImgSrc(im, img, fc);
+    });
+
+    // Fake QR grid
+    const qr = document.getElementById('ticket-qr');
+    if (qr) {
+      for (let i = 0; i < 25; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'ticket-qr-cell';
+        cell.style.opacity = Math.random() > 0.45 ? '1' : '0';
+        qr.appendChild(cell);
+      }
+    }
+
+    // Activate gold light leak
+    document.getElementById('leak-gold')?.classList.add('active');
+  }
+
+  /* =============================================
+     CINEMATIC INIT (collage, film strip, postcards)
+  ============================================= */
+  function initCinematicLayer() {
+    buildCollage();
+    buildFilmStrip();
+    buildPostcards();
+
+    // Check if trailer video is playable
+    const video = document.getElementById('trailer-video');
+    const audioToggle = document.getElementById('trailer-audio-toggle');
+    if (video) {
+      video.addEventListener('canplay', () => {
+        trailerVideoPlayable = true;
+        if (audioToggle) audioToggle.style.display = 'flex';
+        console.log('🎬 Trailer video loaded and ready.');
+      }, { once: true });
+      
+      video.addEventListener('error', () => {
+        trailerVideoPlayable = false;
+        if (audioToggle) audioToggle.style.display = 'none';
+        console.warn('⚠️ Trailer video not found or failed to load. Falling back to image slideshow.');
+      });
+      
+      // Attempt load
+      video.load();
+    }
+  }
+
+  function buildCollage() {
+    // Cycle through hero images of all three dramas
+    const heroes = [
+      { img: KDRAMA_ASSETS.mrQueen.images[0],      fc: KDRAMA_ASSETS.mrQueen.fallbackClass },
+      { img: KDRAMA_ASSETS.perfectCrown.images[0], fc: KDRAMA_ASSETS.perfectCrown.fallbackClass },
+      { img: KDRAMA_ASSETS.filingForLove.images[0],fc: KDRAMA_ASSETS.filingForLove.fallbackClass },
+    ];
+    let idx = 0;
+    const colEl = document.getElementById('collage-img');
+    if (!colEl) return;
+
+    function showNext() {
+      const h = heroes[idx % heroes.length];
+      colEl.classList.remove('loaded');
+      preloadImage(h.img).then(({ ok }) => {
+        if (ok) {
+          colEl.style.backgroundImage = `url('${h.img}')`;
+          requestAnimationFrame(() => requestAnimationFrame(() => colEl.classList.add('loaded')));
+        } else {
+          colEl.className = 'hero-collage-img loaded ' + h.fc;
+        }
+      });
+      idx++;
+    }
+    showNext();
+    setInterval(showNext, 5000);
+  }
+
+  function buildFilmStrip() {
+    const strip = document.getElementById('film-strip');
+    if (!strip) return;
+    const frames = [
+      { img: KDRAMA_ASSETS.mrQueen.images[0],       fc: KDRAMA_ASSETS.mrQueen.fallbackClass,       cap: 'فرمان آگاسی' },
+      { img: KDRAMA_ASSETS.mrQueen.images[1],        fc: KDRAMA_ASSETS.mrQueen.fallbackClass,       cap: 'قصر سلطنتی' },
+      { img: KDRAMA_ASSETS.perfectCrown.images[0],  fc: KDRAMA_ASSETS.perfectCrown.fallbackClass,  cap: 'تاج بی‌نقص' },
+      { img: KDRAMA_ASSETS.perfectCrown.images[1],  fc: KDRAMA_ASSETS.perfectCrown.fallbackClass,  cap: 'نور نرم' },
+      { img: KDRAMA_ASSETS.filingForLove.images[0], fc: KDRAMA_ASSETS.filingForLove.fallbackClass, cap: 'پرونده ثبت قرار' },
+      { img: KDRAMA_ASSETS.filingForLove.images[1], fc: KDRAMA_ASSETS.filingForLove.fallbackClass, cap: 'رسمی ولی عاشقانه' },
+      { img: KDRAMA_ASSETS.mrQueen.images[2],        fc: KDRAMA_ASSETS.mrQueen.fallbackClass,       cap: 'بدون اسپویل' },
+      { img: KDRAMA_ASSETS.easterEggs.images[0] || KDRAMA_ASSETS.perfectCrown.images[2], fc: KDRAMA_ASSETS.easterEggs.fallbackClass, cap: 'رادیو هلیا' },
+    ];
+    frames.forEach(f => {
+      const frame = document.createElement('div');
+      frame.className = 'film-frame';
+      const img = document.createElement('img');
+      img.className = 'film-frame-img';
+      img.alt = f.cap;
+      const cap = document.createElement('div');
+      cap.className = 'film-frame-caption';
+      cap.textContent = f.cap;
+      frame.appendChild(img);
+      frame.appendChild(cap);
+      strip.appendChild(frame);
+      applySafeImgSrc(img, f.img, f.fc);
+    });
+  }
+
+  function buildPostcards() {
+    const row = document.getElementById('postcard-row');
+    if (!row) return;
+    const cards = [
+      { img: KDRAMA_ASSETS.mrQueen.images[1],       fc: KDRAMA_ASSETS.mrQueen.fallbackClass,       cap: 'آگاسی مود',          rot: '-3deg' },
+      { img: KDRAMA_ASSETS.perfectCrown.images[0],  fc: KDRAMA_ASSETS.perfectCrown.fallbackClass,  cap: 'تاج کوچک، شوق بزرگ', rot: '1.5deg' },
+      { img: KDRAMA_ASSETS.filingForLove.images[1], fc: KDRAMA_ASSETS.filingForLove.fallbackClass, cap: 'پرونده قرار',          rot: '-1.5deg' },
+    ];
+    cards.forEach(c => {
+      const pc = document.createElement('div');
+      pc.className = 'postcard';
+      pc.style.setProperty('--rot', c.rot);
+      const img = document.createElement('img');
+      img.className = 'postcard-img';
+      img.alt = c.cap;
+      const ov  = document.createElement('div'); ov.className  = 'postcard-overlay';
+      const cap = document.createElement('div'); cap.className = 'postcard-caption'; cap.textContent = c.cap;
+      pc.appendChild(img);
+      pc.appendChild(ov);
+      pc.appendChild(cap);
+      row.appendChild(pc);
+      applySafeImgSrc(img, c.img, c.fc);
+    });
+  }
+
+  /* =============================================
+     DYNAMIC DATE MOOD
+  ============================================= */
+  const MOOD_PALETTES = {
+    cafe:     { bg:'rgba(120,70,20,.18)',  glow:'rgba(180,120,50,.35)',  leak:'gold'  },
+    noodle:   { bg:'rgba(180,50,60,.18)', glow:'rgba(220,80,90,.30)',   leak:'pink'  },
+    cooking:  { bg:'rgba(190,130,20,.18)',glow:'rgba(216,180,90,.35)',  leak:'gold'  },
+    gallery:  { bg:'rgba(90,40,160,.18)', glow:'rgba(140,80,220,.30)',  leak:'crown' },
+    nature:   { bg:'rgba(30,110,50,.15)', glow:'rgba(60,160,80,.25)',   leak:'gold'  },
+    sports:   { bg:'rgba(20,80,160,.16)', glow:'rgba(40,120,210,.28)',  leak:'gold'  },
+    pottery:  { bg:'rgba(160,90,60,.16)', glow:'rgba(200,130,90,.30)',  leak:'pink'  },
+    cinema:   { bg:'rgba(60,10,100,.22)', glow:'rgba(100,30,160,.35)',  leak:'crown' },
+    escape:   { bg:'rgba(30,10,60,.22)',  glow:'rgba(80,30,130,.30)',   leak:'crown' },
+    surprise: { bg:'rgba(180,30,130,.18)',glow:'rgba(220,80,180,.32)',  leak:'pink'  },
+  };
+
+  function applyMood(typeId) {
+    const palette = MOOD_PALETTES[typeId];
+    if (!palette) return;
+    // Update CSS vars on :root for gentle theming
+    const root = document.documentElement;
+    root.style.setProperty('--mood-glow', palette.glow);
+    // Light leak
+    ['leak-gold','leak-pink','leak-crown'].forEach(id => {
+      document.getElementById(id)?.classList.remove('active');
+    });
+    document.getElementById('leak-' + palette.leak)?.classList.add('active');
+    // Aurora pulse hint on card
+    const card = document.querySelector('#screen-date-type .card');
+    if (card) {
+      card.style.boxShadow = `0 8px 32px rgba(0,0,0,.4), 0 0 60px ${palette.glow}, 0 0 0 1px rgba(216,180,90,.1) inset`;
+      setTimeout(() => { card.style.boxShadow = ''; }, 2000);
+    }
+  }
+
+  /* =============================================
+     COUNTDOWN
+  ============================================= */
+  function startCountdown(target) {
+    function update() {
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '۰';
+        document.getElementById('cd-hours').textContent = '۰۰';
+        document.getElementById('cd-mins').textContent = '۰۰';
+        document.getElementById('cd-secs').textContent = '۰۰';
+        return;
+      }
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      const secs = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-days').textContent = toPersianNum(days);
+      document.getElementById('cd-hours').textContent = toPersianNum(String(hours).padStart(2,'0'));
+      document.getElementById('cd-mins').textContent = toPersianNum(String(mins).padStart(2,'0'));
+      document.getElementById('cd-secs').textContent = toPersianNum(String(secs).padStart(2,'0'));
+    }
+    update();
+    countdownInterval = setInterval(update, 1000);
+  }
+
+  /* =============================================
+     CONFETTI
+  ============================================= */
+  function launchConfetti() {
+    const colors = ['#D8B45A','#FF6FAE','#FFF7EA','#7A1F4D','#FFB3D1','#F0D07A'];
+    for (let i = 0; i < 60; i++) {
+      setTimeout(() => {
+        const p = document.createElement('div');
+        p.className = 'confetti-particle';
+        p.style.left = Math.random()*100 + 'vw';
+        p.style.background = colors[Math.floor(Math.random()*colors.length)];
+        p.style.width = (6+Math.random()*8)+'px';
+        p.style.height = (6+Math.random()*8)+'px';
+        p.style.borderRadius = Math.random()>0.5 ? '50%' : '2px';
+        p.style.animationDuration = (2+Math.random()*3)+'s';
+        p.style.animationDelay = (Math.random()*0.5)+'s';
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 5000);
+      }, i * 40);
+    }
+  }
+
+  /* =============================================
+     COPY SUMMARY
+  ============================================= */
+  function copySummary() {
+    const dateStr = document.getElementById('sum-date').textContent;
+    const typeStr = selectedDateType ? `${selectedDateType.icon} ${selectedDateType.title}` : '—';
+    const typeKr  = selectedDateType ? selectedDateType.kr : '';
+    const text =
+      `💌 پرونده دیت آگاسی\n` +
+      `━━━━━━━━━━━━━━━━━━━━\n` +
+      `نوع: ${typeStr}\n` +
+      `      ${typeKr}\n` +
+      `تاریخ: ${dateStr}\n` +
+      `ساعت: ${selectedTime || '—'}\n` +
+      `━━━━━━━━━━━━━━━━━━━━\n` +
+      `هلیا آگاسی پرونده را بررسی و تأیید کرد ✨`;
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('خلاصه پرونده کپی شد. می‌تونی در تلگرام بفرستی. 📋');
+    }).catch(() => {
+      showToast('کپی موفق نشد. متن بالا رو دستی کپی کن.');
+    });
+  }
+
+  /* =============================================
+     TOAST
+  ============================================= */
+  let toastTimer = null;
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
+  }
+
+  /* =============================================
+     EASTER EGG TOAST (top)
+  ============================================= */
+  let eggTimer = null;
+  function showEasterEgg(msg) {
+    const el = document.getElementById('easter-egg-toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    if (eggTimer) clearTimeout(eggTimer);
+    eggTimer = setTimeout(() => el.classList.remove('show'), 3000);
+  }
+
+  /* =============================================
+     LOGO EASTER EGG (triple click)
+  ============================================= */
+  function initLogoEasterEgg() {
+    const logo = document.getElementById('logo-badge');
+    logo.addEventListener('click', () => {
+      logoClickCount++;
+      if (logoClickTimer) clearTimeout(logoClickTimer);
+      logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 800);
+      if (logoClickCount >= 3) {
+        logoClickCount = 0;
+        toggleRadioExpand();
+      }
+    });
+    logo.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') logo.click();
+    });
+  }
+
+  /* =============================================
+     UTILS
+  ============================================= */
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function toPersianNum(n) {
+    const persianDigits = '۰۱۲۳۴۵۶۷۸۹';
+    return String(n).replace(/\d/g, d => persianDigits[d]);
+  }
+
+  /* =============================================
+     INIT
+  ============================================= */
+
+  /* =============================================================================
+     INTERACTION UPGRADE VARIABLES & STATES
+     ============================================================================= */
+  
+  /* =============================================================================
+     VIBE CAPTIONS ENGINE
+     ============================================================================= */
+  const VIBE_CAPTIONS = {
+    palace: {
+      invitation: 'قوانین دربار سلطنتی می‌گویند: ملکه همیشه فرمانروای مطلق است. 👑',
+      invitationSub: 'فرمان دربار صادر شد: انتخاب آگاسی مطاع است. 📜',
+      dateType: 'در پیشگاه دربار، شما ملکه هستید و نیازی به اثبات چیزی نیست. ✨',
+      dateTime: 'سربازان دربار با احترام و شوق در انتظار دستور ملکه هستند. 🛡️',
+      confirm: 'مهر طلایی دربار آماده تأیید نهایی است. 👑',
+      success: 'این فرمان سلطنتی بدون هیچ اسپویلی اجرا خواهد شد. 🌙'
+    },
+    perfect: {
+      invitation: 'پرنسس لازم نیست بی‌نقص باشه؛ همین هلیای واقعی کافیه. 🌸',
+      invitationSub: 'تاج صورتی با لبخند آگاسی می‌درخشد. ⭐',
+      dateType: 'افسانه‌ها واقعی میشن؛ وقتی هلیای واقعی خودش باشه. ✨',
+      dateTime: 'شوق یک قرار افسانه‌ای بدون هیچ عجله‌ای. 🕐',
+      confirm: 'درخشش این تاج با حضور هلیا کامل میشه. 🌸',
+      success: 'یک روز رویایی مثل پایان قشنگ سریال‌ها. 🌙'
+    },
+    filing: {
+      invitation: 'پرونده عشق شماره ۰۰۱: هلیا به عنوان مدیر پروژه تایید شد. 📂',
+      invitationSub: 'سند رسمی ثبت شد؛ اوپا امضا کرد. 🖊️',
+      dateType: 'هیچ فرم یا تعهدی نیاز نیست؛ پرونده کاملاً باز است. 📁',
+      dateTime: 'دستور کار امروز: یک دیت اداری صمیمانه با طعم قهوه. ☕',
+      confirm: 'پرونده با مهر و امضای رسمی هلیا بایگانی شد. 📂',
+      success: 'این پرونده محرمانه بدون هیچ افشای اطلاعاتی ثبت شد. 📁'
+    },
+    hybrid: {
+      invitation: 'پرنسس لازم نیست بی‌نقص باشه؛ همین هلیای واقعی کافیه. 🌸',
+      invitationSub: 'آگاسی مود، اوپا تأیید. ⭐',
+      dateType: 'قرار نیست چیزی رو ثابت کنی. ✨',
+      dateTime: 'بدون فشار، با کمی شوق. 🕐',
+      confirm: 'همین هلیای واقعی کافیه. 🌸',
+      success: 'بدون اسپویل، فقط یک دعوت خاص. 🌙'
+    }
+  };
+
+  function updateVibeCaptions() {
+    const caps = VIBE_CAPTIONS[selectedVibe] || VIBE_CAPTIONS.hybrid;
+    const elInv = document.getElementById('mc-invitation');
+    const elInvSub = document.getElementById('mc-invitation-sub');
+    const elType = document.getElementById('mc-date-type');
+    const elTime = document.getElementById('mc-date-time');
+    const elConf = document.getElementById('mc-confirm');
+    const elSucc = document.getElementById('mc-success');
+
+    if (elInv) elInv.innerHTML = `<span class="emoji">💌</span> « ${caps.invitation} »`;
+    if (elInvSub) elInvSub.innerHTML = `<span class="emoji">⭐</span> « ${caps.invitationSub} »`;
+    if (elType) elType.innerHTML = `<span class="emoji">✨</span> « ${caps.dateType} »`;
+    if (elTime) elTime.innerHTML = `<span class="emoji">🕐</span> « ${caps.dateTime} »`;
+    if (elConf) elConf.innerHTML = `<span class="emoji">🌸</span> « ${caps.confirm} »`;
+    if (elSucc) elSucc.innerHTML = `<span class="emoji">🌙</span> « ${caps.success} »`;
+  }
+
+  function showDecree(title, body, stageNum) {
+    const overlay = document.getElementById('royal-decree-overlay');
+    const titleEl = document.getElementById('decree-title-el');
+    const bodyEl = document.getElementById('decree-body-el');
+    const choicesEl = document.getElementById('decree-choices-el');
+    const closeBtn = document.getElementById('decree-close-btn');
+    const stampEl = document.getElementById('decree-stamp-el');
+    
+    // Default config
+    titleEl.textContent = title;
+    bodyEl.innerHTML = body;
+    choicesEl.style.display = 'none';
+    choicesEl.innerHTML = '';
+    closeBtn.style.display = 'block';
+    closeBtn.textContent = 'رویت شد و مطاع است 📜';
+    
+    // Stamp configuration
+    if (stageNum === 1) {
+      stampEl.innerHTML = '<div class="decree-stamp-icon">🟡</div><div class="decree-stamp-text" style="color:#d4af37">OBJECTION REGISTERED</div>';
+      stampEl.style.borderColor = '#d4af37';
+      stampEl.style.display = 'flex';
+    } else if (stageNum === 2) {
+      stampEl.innerHTML = '<div class="decree-stamp-icon">🎭</div><div class="decree-stamp-text" style="color:#7A1F4D">DRAMA ACTIVATED</div>';
+      stampEl.style.borderColor = '#7A1F4D';
+      stampEl.style.display = 'flex';
+    } else if (stageNum === 3) {
+      stampEl.innerHTML = '<div class="decree-stamp-icon">🚪</div><div class="decree-stamp-text" style="color:#FF6FAE">BUTTON ESCAPED</div>';
+      stampEl.style.borderColor = '#FF6FAE';
+      stampEl.style.display = 'flex';
+    } else if (stageNum === 4) {
+      stampEl.innerHTML = '<div class="decree-stamp-icon">⚖️</div><div class="decree-stamp-text" style="color:#d4af37">ROYAL TRIAL</div>';
+      stampEl.style.borderColor = '#d4af37';
+      stampEl.style.display = 'flex';
+      
+      // Render Crown Meter in scroll modal
+      bodyEl.innerHTML = body + `
+        <div class="decree-crown-container" style="margin-top:16px; background:rgba(216,180,90,0.08); border:1px solid rgba(216,180,90,0.25); border-radius:8px; padding:12px;">
+          <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:bold; color:#d4af37; margin-bottom:6px;">
+            <span>👑 رضایت دربار (Crown Meter):</span>
+            <span id="decree-crown-val">۳۵%</span>
+          </div>
+          <div style="width:100%; height:6px; background:rgba(255,255,255,0.1); border-radius:3px; overflow:hidden;">
+            <div style="width:35%; height:100%; background:#d4af37; box-shadow: 0 0 8px #d4af37;"></div>
+          </div>
+          <div style="font-size:0.65rem; color:rgba(255,247,234,0.6); margin-top:6px; font-style:italic; text-align:right;">
+            «ملکه از مخالفت‌های پیاپی ناراضی است. تاج در لبه سقوط است!»
+          </div>
+        </div>
+      `;
+    } else {
+      stampEl.style.display = 'none';
+    }
+    
+    overlay.classList.add('active');
+  }
+
+  function closeDecree() {
+    document.getElementById('royal-decree-overlay').classList.remove('active');
+  }
+
+  function handleNo() {
+    trialStage++;
+    const btnNo = document.getElementById('btn-no');
+    const btnNoText = document.getElementById('btn-no-text');
+    const btnNoKr = document.getElementById('btn-no-kr');
+    const btnYes = document.getElementById('btn-yes');
+    
+    // Shake screen card
+    const card = document.querySelector('#screen-invitation .card');
+    if (card) {
+      card.classList.remove('shake');
+      void card.offsetWidth;
+      card.classList.add('shake');
+    }
+    
+    if (navigator.vibrate) navigator.vibrate(30);
+
+    if (trialStage === 1) {
+      // Royal Objection
+      btnNo.style.transform = 'scale(0.8)';
+      btnYes.style.boxShadow = '0 0 25px rgba(216,180,90,0.6)';
+      btnYes.style.transform = 'scale(1.04)';
+      btnYes.classList.add('glowing-yes');
+      showDecree(
+        'دستور عالی‌جناب / Royal Objection 👑',
+        'اعتراض رسمی آگاسی هلیا در دفترخانه ثبت شد. <br/><br/><b>«اعتراض آگاسی با موفقیت ثبت شد.»</b>',
+        1
+      );
+    } 
+    else if (trialStage === 2) {
+      // Drama Episode Activated
+      showDecree(
+        'درام قسمت دوم فعال شد / Drama Activated 🎭',
+        'پرونده دیت وارد فاز نمایشی شد! دربار سامیار اوپا را به تلاش برای جلب نظر با کیمچی جیگه بدون مجوز متهم کرده است. لطفا نظر بدهید:',
+        2
+      );
+      
+      const choicesEl = document.getElementById('decree-choices-el');
+      choicesEl.style.display = 'flex';
+      
+      const options = [
+        { text: 'فعلاً نه، ولی ادامه بده ببینم چی ساختی ➔', action: () => { closeDecree(); handleYes(); } },
+        { text: 'اوپا زیادی خوشحاله، کنترلش کن 👮', action: () => { closeDecree(); showToast('اوپا کنترل شد؛ ولی پرونده جلو می‌رود! 👮'); handleYes(); } },
+        { text: 'بذار اول مود قرار رو ببینم 👀', action: () => { closeDecree(); handleYes(); } }
+      ];
+      
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'decree-choice-btn';
+        btn.textContent = opt.text;
+        btn.onclick = opt.action;
+        choicesEl.appendChild(btn);
+      });
+      
+      document.getElementById('decree-close-btn').style.display = 'none';
+    } 
+    else if (trialStage === 3) {
+      // The Button Escapes
+      btnNo.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+      btnNo.style.transform = 'translate(-120px, 30px) scale(0.7)';
+      showToast('دکمه نه رفت پشت صحنه؛ ولی حق انتخاب هنوز سر جاشه. 😉');
+      
+      // Add Graceful Exit button under btn-no if not already there
+      if (!document.getElementById('graceful-exit-btn')) {
+        const exitBtn = document.createElement('button');
+        exitBtn.id = 'graceful-exit-btn';
+        exitBtn.className = 'btn btn-graceful-exit';
+        exitBtn.innerHTML = 'خروج محترمانه از پرونده دیت 🚪';
+        exitBtn.onclick = () => showPauseScreen();
+        btnNo.parentElement.appendChild(exitBtn);
+      }
+    } 
+    else if (trialStage === 4) {
+      // Crown Trial
+      showDecree(
+        'جلسه رسمی دادگاه تاج / Crown Trial ⚖️',
+        'پرونده دیت سامیار و هلیا به اوج حساسیت رسیده است. «تاج هنوز سر جاشه. پرونده فقط دراماتیکتر شد.» چه دستوری می‌فرمایید؟',
+        4
+      );
+      
+      const choicesEl = document.getElementById('decree-choices-el');
+      choicesEl.style.display = 'flex';
+      
+      const options = [
+        { text: 'پرونده رو pause کن ⏸️', action: () => { closeDecree(); showPauseScreen(); } },
+        { text: 'مودها رو ببینم ➔', action: () => { closeDecree(); handleYes(); } },
+        { text: 'باشه، ادامه بده 💛', action: () => { closeDecree(); handleYes(); } }
+      ];
+      
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'decree-choice-btn';
+        btn.textContent = opt.text;
+        btn.onclick = opt.action;
+        choicesEl.appendChild(btn);
+      });
+      
+      document.getElementById('decree-close-btn').style.display = 'none';
+    } 
+    else {
+      // Stage 5: Respectful Pause
+      showPauseScreen();
+    }
+  }
+
+  function showPauseScreen() {
+    closeDecree();
+    // Hide standard button group and elements
+    document.getElementById('btn-yes').style.display = 'none';
+    document.getElementById('btn-no').style.display = 'none';
+    const exitBtn = document.getElementById('graceful-exit-btn');
+    if (exitBtn) exitBtn.style.display = 'none';
+    
+    // Inject custom pause block inside mini-no-screen
+    const miniNo = document.getElementById('mini-no-screen');
+    miniNo.innerHTML = `
+      <div class="pause-stamp">⏸️</div>
+      <div class="mini-screen-title" style="color:var(--gold);">پرونده متوقف شد (Respectful Pause)</div>
+      <div class="mini-screen-body" style="font-size:0.9rem; line-height:1.7;">
+        اوپا فشار نمیاره. این پرونده با احترام بسته نمیشه؛ فقط pause میشه. 🌙
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="resumeInvitationFlow()">برگردم به دعوت ✨</button>
+        <button class="btn btn-secondary" onclick="resumeFlowToVibe()">فقط مودها رو ببینم 👀</button>
+        <button class="btn btn-no" onclick="copyDateLink()">کپی لینک برای بعداً 📋</button>
+      </div>
+    `;
+    miniNo.classList.add('active');
+  }
+
+  function resumeInvitationFlow() {
+    const miniNo = document.getElementById('mini-no-screen');
+    miniNo.classList.remove('active');
+    document.getElementById('btn-yes').style.display = '';
+    document.getElementById('btn-no').style.display = '';
+    document.getElementById('btn-no').style.transform = '';
+    document.getElementById('btn-no').style.fontSize = '';
+    document.getElementById('btn-no').style.padding = '';
+    document.getElementById('btn-yes').style.transform = '';
+    document.getElementById('btn-yes').classList.remove('glowing-yes');
+    const exitBtn = document.getElementById('graceful-exit-btn');
+    if (exitBtn) exitBtn.remove();
+    trialStage = 0;
+    showToast('پرونده دیت سامیار و هلیا از حالت تعلیق خارج شد! 🌸');
+  }
+
+  function resumeFlowToVibe() {
+    const miniNo = document.getElementById('mini-no-screen');
+    miniNo.classList.remove('active');
+    handleYes();
+  }
+
+  function copyDateLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      showToast('لینک دعوت کپی شد. هر زمان خواستی می‌تونی بازش کنی. 📋');
+    });
+  }
+
+  function runTrailerSequence() {
+    showScreen(6); // Trailer is Screen 6
+    document.getElementById('app').style.minHeight = '100vh';
+    
+    const video = document.getElementById('trailer-video');
+    const imgEl = document.getElementById('trailer-img');
+    const audioToggle = document.getElementById('trailer-audio-toggle');
+    
+    trailerIdx = 0;
+    if (trailerTimer) clearTimeout(trailerTimer);
+    
+    if (video && trailerVideoPlayable) {
+      // Hide fallback image, show video
+      imgEl.style.display = 'none';
+      video.style.display = 'block';
+      if (audioToggle) audioToggle.style.display = 'flex';
+      
+      video.currentTime = 0;
+      video.muted = true; // Autoplay rule
+      if (audioToggle) audioToggle.textContent = '🔇';
+      
+      video.play().then(() => {
+        console.log('🎬 Video playing successfully.');
+        runSyncedSubtitles();
+        video.onended = () => {
+          endTrailer();
+        };
+      }).catch(err => {
+        console.warn('⚠️ Video play failed. Falling back to slideshow.', err);
+        runSlideshowFallback();
+      });
+    } else {
+      runSlideshowFallback();
+    }
+  }
+
+  function toggleTrailerMute() {
+    const video = document.getElementById('trailer-video');
+    const btn = document.getElementById('trailer-audio-toggle');
+    if (!video || !btn) return;
+    video.muted = !video.muted;
+    btn.textContent = video.muted ? '🔇' : '🔊';
+    showToast(video.muted ? 'صدای پیش‌نمایش قطع شد.' : 'صدای پیش‌نمایش فعال شد.');
+  }
+
+  function runSyncedSubtitles() {
+    if (trailerTimer) clearTimeout(trailerTimer);
+    
+    const subFa = document.getElementById('trailer-sub-fa');
+    const subKr = document.getElementById('trailer-sub-kr');
+    
+    function showSubtitleStep() {
+      if (trailerIdx >= TRAILER_SCENES.length) {
+        return;
+      }
+      
+      const slide = TRAILER_SCENES[trailerIdx];
+      subFa.textContent = slide.fa;
+      subKr.textContent = slide.kr;
+      
+      trailerIdx++;
+      trailerTimer = setTimeout(showSubtitleStep, slide.dur);
+    }
+    
+    showSubtitleStep();
+  }
+
+  function runSlideshowFallback() {
+    if (trailerTimer) clearTimeout(trailerTimer);
+    
+    const video = document.getElementById('trailer-video');
+    const imgEl = document.getElementById('trailer-img');
+    const audioToggle = document.getElementById('trailer-audio-toggle');
+    
+    if (video) video.style.display = 'none';
+    if (audioToggle) audioToggle.style.display = 'none';
+    imgEl.style.display = 'block';
+    
+    trailerIdx = 0;
+    playNextTrailerSlide();
+  }
+
+  function playNextTrailerSlide() {
+    if (trailerIdx >= TRAILER_SCENES.length) {
+      endTrailer();
+      return;
+    }
+    
+    const slide = TRAILER_SCENES[trailerIdx];
+    const imgEl = document.getElementById('trailer-img');
+    const subFa = document.getElementById('trailer-sub-fa');
+    const subKr = document.getElementById('trailer-sub-kr');
+    
+    imgEl.classList.remove('active');
+    
+    preloadImage(slide.img).then(({ ok }) => {
+      if (ok) {
+        imgEl.src = slide.img;
+        imgEl.className = 'trailer-screen-img active';
+      } else {
+        imgEl.className = 'trailer-screen-img active ' + slide.fallback;
+      }
+      
+      subFa.textContent = slide.fa;
+      subKr.textContent = slide.kr;
+      
+      trailerIdx++;
+      trailerTimer = setTimeout(playNextTrailerSlide, slide.dur);
+    });
+  }
+
+  function skipTrailer() {
+    if (trailerTimer) clearTimeout(trailerTimer);
+    
+    const video = document.getElementById('trailer-video');
+    if (video) {
+      video.pause();
+      video.onended = null;
+    }
+    
+    endTrailer();
+  }
+
+  function endTrailer() {
+    const video = document.getElementById('trailer-video');
+    if (video) {
+      video.pause();
+      video.onended = null;
+    }
+    showScreen(2); // Proceed to date type
+  }
+
+  function handleYes() {
+    document.getElementById('mini-no-screen').classList.remove('active');
+    document.getElementById('btn-yes').style.display = '';
+    document.getElementById('btn-no').style.display = '';
+    const exitBtn = document.getElementById('graceful-exit-btn');
+    if (exitBtn) exitBtn.remove();
+    
+    showToast('دربار: پیش‌نمایش قرار در حال لود شدن است... 🎬');
+    if (navigator.vibrate) navigator.vibrate(40);
+    setTimeout(runTrailerSequence, 600);
+  }
+
+  function selectVibe(vibeId, element) {
+    selectedVibe = vibeId;
+    document.querySelectorAll('.vibe-card').forEach(card => {
+      card.classList.remove('selected');
+      card.setAttribute('aria-checked', 'false');
+    });
+    element.classList.add('selected');
+    element.setAttribute('aria-checked', 'true');
+    
+    // Apply body theme class
+    const body = document.body;
+    body.classList.remove('vibe-palace', 'vibe-perfect', 'vibe-filing');
+    
+    if (vibeId === 'palace') {
+      body.classList.add('vibe-palace');
+      showToast('تم فرمان سلطنتی فعال شد. 👑');
+    } else if (vibeId === 'perfect') {
+      body.classList.add('vibe-perfect');
+      showToast('تم تاج بی‌نقص فعال شد. 🌸');
+    } else if (vibeId === 'filing') {
+      body.classList.add('vibe-filing');
+      showToast('تم پرونده ثبت عشق فعال شد. 📂');
+    }
+    
+    // Update captions
+    updateVibeCaptions();
+    
+    // Update Crown Meter
+    updateCrownMeter();
+  }
+
+  function updateCrownMeter() {
+    let score = 50; 
+    let commentary = 'ملکه هنوز گزینه‌ای انتخاب نکرده است... دربار منتظر است.';
+    
+    // Vibe modifications
+    if (selectedVibe === 'palace') {
+      score += 15;
+    } else if (selectedVibe === 'perfect') {
+      score += 20; 
+    } else if (selectedVibe === 'filing') {
+      score += 10;
+    }
+    
+    // Date type modifications
+    if (selectedDateType) {
+      const typeScore = selectedDateType.satisfaction || 0;
+      score = Math.min(100, Math.floor((score + typeScore) / 1.5));
+      
+      commentary = `انتخاب دیت: ${selectedDateType.title}. `;
+      if (selectedDateType.id === 'noodle') {
+        commentary += 'دربار با نودل شدیداً موافق است! ملکه شکمو است. 🍜 (+25%)';
+      } else if (selectedDateType.id === 'gallery') {
+        commentary += 'انتخاب هنرمندانه! چشم‌های آگاسی روشن شد. 🎨 (+20%)';
+      } else if (selectedDateType.id === 'cafe') {
+        commentary += 'کافه کلاسیک. انتخاب امن اما صمیمی. ☕ (+10%)';
+      } else if (selectedDateType.id === 'surprise') {
+        commentary += 'ملکه کنترل را به اوپا سپرد. دربار نگران اما امیدوار! 🎁 (+30%)';
+      } else if (selectedDateType.id === 'cinema') {
+        commentary += 'سینما! دربار تعهدنامه عدم اسپویل را با جدیت بررسی می‌کند. 🎬';
+      } else {
+        commentary += 'این انتخاب مطاع است و ملکه راضی‌ست. ✨';
+      }
+    }
+    
+    // Music wave check (from Radio Helya)
+    const waveSelect = document.getElementById('radio-wave-select');
+    if (waveSelect) {
+      const val = waveSelect.value;
+      if (val === 'smile') {
+        score = Math.min(100, score + 10);
+        commentary += ' پخش موج لبخند رضایت دربار را زیاد کرد. (+10%)';
+      } else if (val === 'noodle') {
+        score = Math.min(100, score + 12);
+        commentary += ' موج نودلی رضایت ملکه را افزایش داد. (+12%)';
+      }
+    }
+    
+    score = Math.max(10, Math.min(100, score));
+    
+    // Update DOM
+    document.getElementById('crown-value').textContent = toPersianNum(score) + '%';
+    document.getElementById('crown-fill').style.width = score + '%';
+    document.getElementById('crown-commentary').textContent = commentary;
+  }
+
+  function toggleCardExpand(cardEl, dt) {
+    const wasExpanded = cardEl.classList.contains('expanded');
+    
+    // Collapse all cards first
+    document.querySelectorAll('.date-card').forEach(c => {
+      c.classList.remove('expanded');
+    });
+    
+    if (!wasExpanded) {
+      cardEl.classList.add('expanded');
+      cardEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (navigator.vibrate) navigator.vibrate(20);
+    }
+  }
+
+  function keepThisMode(event, dateTypeId) {
+    if (event) event.stopPropagation();
+    const dt = DATE_TYPES.find(d => d.id === dateTypeId);
+    if (!dt) return;
+    
+    selectedDateType = dt;
+    
+    renderDateGrid();
+    
+    document.getElementById('selection-feedback').textContent = dt.feedback;
+    document.getElementById('btn-next-type').style.display = '';
+    
+    applyMood(dt.id);
+    triggerDateTypeEasterEgg(dt.id);
+    updateCrownMeter();
+    
+    const activeCard = document.querySelector('.date-card.selected');
+    if (activeCard) {
+      activeCard.style.transform = 'scale(1.03)';
+      setTimeout(() => activeCard.style.transform = '', 300);
+    }
+  }
+
+  function initAudioContext() {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    } catch(e) {
+      console.warn('Web Audio API is not supported or was blocked:', e);
+      audioCtx = null;
+    }
+  }
+
+  function toggleRadioExpand() {
+    const widget = document.getElementById('radio-widget');
+    widget.classList.toggle('expanded');
+    initAudioContext();
+  }
+
+  function togglePlayRadio() {
+    initAudioContext();
+    const btn = document.getElementById('radio-play-btn');
+    
+    if (synthOsc || (!audioCtx && btn.classList.contains('playing'))) {
+      stopSynthMelody();
+      btn.textContent = '▶';
+      btn.classList.remove('playing');
+      currentTrackName = 'سکوت';
+      document.getElementById('radio-wave-info').textContent = 'رادیو خاموش است.';
+      stopEqualizer();
+    } else {
+      btn.textContent = '⏸️';
+      btn.classList.add('playing');
+      if (audioCtx) {
+        startSynthMelody();
+      } else {
+        const wave = document.getElementById('radio-wave-select').value;
+        const waveNames = { smile: 'موج لبخند 😊', noodle: 'موج نودل 🍜', spoiler: 'موج بدون اسپویل 🎬' };
+        currentTrackName = waveNames[wave];
+        document.getElementById('radio-wave-info').textContent = `در حال پخش (بی‌صدا): ${currentTrackName}`;
+      }
+      startEqualizer();
+    }
+  }
+
+  function toggleMuteRadio() {
+    isMuted = !isMuted;
+    const btn = document.getElementById('radio-mute-btn');
+    btn.textContent = isMuted ? '🔇' : '🔊';
+    if (synthGain && audioCtx) {
+      synthGain.gain.setValueAtTime(isMuted ? 0 : 0.15, audioCtx.currentTime);
+    }
+    showToast(isMuted ? 'صدای رادیو قطع شد.' : 'صدای رادیو متصل شد.');
+  }
+
+  function changeRadioWave(val) {
+    initAudioContext();
+    updateCrownMeter();
+    if (synthOsc) {
+      stopSynthMelody();
+      startSynthMelody();
+    } else {
+      const names = { smile: 'موج لبخند', noodle: 'موج نودل', spoiler: 'موج بدون اسپویل' };
+      document.getElementById('radio-wave-info').textContent = `آماده پخش: ${names[val]}`;
+      if (document.getElementById('radio-play-btn').classList.contains('playing')) {
+        const waveNames = { smile: 'موج لبخند 😊', noodle: 'موج نودل 🍜', spoiler: 'موج بدون اسپویل 🎬' };
+        currentTrackName = waveNames[val];
+        document.getElementById('radio-wave-info').textContent = `در حال پخش (بی‌صدا): ${currentTrackName}`;
+      }
+    }
+  }
+
+  function startSynthMelody() {
+    if (!audioCtx) return;
+    const wave = document.getElementById('radio-wave-select').value;
+    const melody = TRACK_MELODIES[wave];
+    const waveNames = { smile: 'موج لبخند 😊', noodle: 'موج نودل 🍜', spoiler: 'موج بدون اسپویل 🎬' };
+    currentTrackName = waveNames[wave];
+    document.getElementById('radio-wave-info').textContent = `در حال پخش: ${currentTrackName}`;
+    
+    synthGain = audioCtx.createGain();
+    synthGain.gain.setValueAtTime(isMuted ? 0 : 0.12, audioCtx.currentTime);
+    synthGain.connect(audioCtx.destination);
+    
+    melodyNoteIdx = 0;
+    
+    function playNote() {
+      if (melodyNoteIdx >= melody.length) {
+        melodyNoteIdx = 0;
+      }
+      const note = melody[melodyNoteIdx];
+      
+      if (synthOsc) {
+        try { synthOsc.stop(); } catch(e){}
+      }
+      
+      synthOsc = audioCtx.createOscillator();
+      synthOsc.type = 'sine';
+      synthOsc.frequency.setValueAtTime(note.note, audioCtx.currentTime);
+      
+      synthGain.gain.setValueAtTime(0, audioCtx.currentTime);
+      synthGain.gain.linearRampToValueAtTime(isMuted ? 0 : 0.15, audioCtx.currentTime + 0.05);
+      synthGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + note.dur - 0.05);
+      
+      synthOsc.connect(synthGain);
+      synthOsc.start();
+      
+      melodyInterval = setTimeout(playNote, note.dur * 1000 + 100);
+      melodyNoteIdx++;
+    }
+    
+    playNote();
+  }
+
+  function stopSynthMelody() {
+    if (melodyInterval) clearTimeout(melodyInterval);
+    if (synthOsc) {
+      try { synthOsc.stop(); } catch(e){}
+      synthOsc = null;
+    }
+    synthGain = null;
+  }
+
+  function startEqualizer() {
+    const canvas = document.getElementById('radio-eq-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const barCount = 6;
+    const bars = Array(barCount).fill(0).map(() => Math.random() * 10 + 2);
+    
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#FF6FAE';
+      for (let i = 0; i < barCount; i++) {
+        const target = Math.random() * 14 + 2;
+        bars[i] += (target - bars[i]) * 0.3;
+        const x = i * 10 + 2;
+        const h = bars[i];
+        const y = canvas.height - h;
+        ctx.fillRect(x, y, 6, h);
+      }
+      eqAnimFrame = requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  function stopEqualizer() {
+    if (eqAnimFrame) cancelAnimationFrame(eqAnimFrame);
+    const canvas = document.getElementById('radio-eq-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  function toggleDebugPanel() {
+    const dbg = document.getElementById('debug-panel');
+    dbg.classList.toggle('active');
+    
+    if (dbg.classList.contains('active')) {
+      document.getElementById('dbg-url').textContent = window.location.href;
+      document.getElementById('dbg-origin').textContent = window.location.origin;
+      document.getElementById('dbg-protocol').textContent = window.location.protocol;
+      document.getElementById('dbg-sdk-loaded').textContent = (typeof emailjs !== 'undefined') ? 'Yes (SDK present)' : 'No (Blocked/Missing)';
+      document.getElementById('dbg-sdk-init').textContent = (typeof emailjs !== 'undefined' && emailjs.init) ? 'Yes' : 'No';
+      document.getElementById('dbg-pub-key').textContent = EMAILJS_PUBLIC_KEY.slice(0, 6) + '...' + EMAILJS_PUBLIC_KEY.slice(-4);
+      document.getElementById('dbg-service-id').textContent = EMAILJS_SERVICE_ID;
+      document.getElementById('dbg-template-id').textContent = EMAILJS_TEMPLATE_ID;
+      logToDebugBox('Debug Panel opened.');
+    }
+  }
+
+  function cheatScreen(num) {
+    showScreen(num);
+    showToast(`تغییر شبیه‌سازی: صفحه ${num}`);
+  }
+
+  function toggleMockEmailFailure(checked) {
+    mockEmailFailure = checked;
+    logToDebugBox(`Failure Simulation: ${checked ? 'ON' : 'OFF'}`);
+  }
+
+  function logToDebugBox(msg) {
+    const box = document.getElementById('dbg-logs-box');
+    const time = new Date().toLocaleTimeString();
+    box.innerHTML = `[${time}] ${msg}\n` + box.innerHTML;
+  }
+
+  async function sendTestEmailDirect() {
+    logToDebugBox('Sending Test Email from Debug Panel...');
+    const testParams = {
+      to_email: SAMYAR_EMAIL,
+      to_name: "Samyar",
+      from_name: "Helya Date Website Test",
+      user_name: "Helya Test",
+      name: "Helya Date Website Test",
+      reply_to: SAMYAR_EMAIL,
+      email: SAMYAR_EMAIL,
+      subject: "EmailJS Test",
+      title: "EmailJS Test",
+      message: "EmailJS test from Helya Date website",
+      date_type: "Debug Test",
+      date_type_kr: "테스트",
+      selected_date: "Test Date",
+      selected_time: "Test Time",
+      selected_vibe: "Debug",
+      submitted_at: new Date().toISOString()
+    };
+    
+    document.getElementById('dbg-last-params').textContent = JSON.stringify(testParams);
+    document.getElementById('dbg-last-response').textContent = 'Waiting...';
+    document.getElementById('dbg-last-error').textContent = 'None';
+    
+    console.group("EmailJS SEND DEBUG");
+    console.log("publicKey:", EMAILJS_PUBLIC_KEY);
+    console.log("serviceID:", EMAILJS_SERVICE_ID);
+    console.log("templateID:", EMAILJS_TEMPLATE_ID);
+    console.log("templateParams:", testParams);
+    console.groupEnd();
+    
+    try {
+      if (typeof emailjs === 'undefined') {
+        throw { status: 0, text: 'SDK missing: CDN/adblock/internet issue' };
+      }
+      
+      const res = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        testParams,
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
+      logToDebugBox(`SUCCESS: ${JSON.stringify(res)}`);
+      document.getElementById('dbg-last-response').textContent = JSON.stringify(res);
+      showToast('ایمیل تستی با موفقیت ارسال شد!');
+    } catch(err) {
+      let friendlyError = 'خطای نامشخص';
+      const status = err?.status || 500;
+      const text = err?.text || err?.message || 'Network/CORS error';
+      
+      if (status === 400) friendlyError = 'تداخل در پارامترها یا شناسه قالب اشتباه (400)';
+      else if (status === 401) friendlyError = 'کلید عمومی نامعتبر است (401)';
+      else if (status === 403) friendlyError = 'ارسال از این دامنه مسدود است (403)';
+      else if (status === 429) friendlyError = 'نرخ ارسال بیش از حد مجاز (429)';
+      else if (status === 451) friendlyError = 'ارسال توسط مرورگر مسدود شد (451)';
+      
+      logToDebugBox(`FAILED (${status}): ${text} | ${friendlyError}`);
+      document.getElementById('dbg-last-error').textContent = `(${status}): ${text} [${friendlyError}]`;
+      console.error("EmailJS FAILED", {
+        status: status,
+        text: text,
+        error: err,
+        params: testParams
+      });
+      showToast(`خطا: ${friendlyError}`);
+    }
+  }
+
+  function customizeTicketWithVibe() {
+    const vibeLabel = { palace: 'Mr. Queen 👑', perfect: 'Perfect Crown 🌸', filing: 'Filing for Love 📂' }[selectedVibe] || 'پیش‌فرض ترکیبی 믹س';
+    document.getElementById('tkt-vibe').textContent = vibeLabel;
+    
+    const stamp = document.getElementById('success-stamp');
+    if (selectedVibe === 'palace') {
+      stamp.style.borderColor = '#D8B45A';
+      stamp.style.color = '#D8B45A';
+      stamp.innerHTML = '<span class="success-stamp-title">CONFIRMED</span><span class="success-stamp-icon">👑</span><span class="success-stamp-sub">BY AGASSI HELYA</span>';
+    } else if (selectedVibe === 'perfect') {
+      stamp.style.borderColor = '#FF6FAE';
+      stamp.style.color = '#FF6FAE';
+      stamp.innerHTML = '<span class="success-stamp-title">CONFIRMED</span><span class="success-stamp-icon">🌸</span><span class="success-stamp-sub">BY AGASSI HELYA</span>';
+    } else if (selectedVibe === 'filing') {
+      stamp.style.borderColor = '#b3a793';
+      stamp.style.color = '#b3a793';
+      stamp.innerHTML = '<span class="success-stamp-title">CONFIRMED</span><span class="success-stamp-icon">📂</span><span class="success-stamp-sub">BY AGASSI HELYA</span>';
+    } else {
+      stamp.style.borderColor = 'var(--gold)';
+      stamp.style.color = 'var(--gold)';
+      stamp.innerHTML = '<span class="success-stamp-title">CONFIRMED</span><span class="success-stamp-icon">💛</span><span class="success-stamp-sub">BY AGASSI HELYA</span>';
+    }
+  }
+
+  function generateShareableText() {
+    const dateStr = document.getElementById('sum-date').textContent;
+    const typeStr  = selectedDateType ? `${selectedDateType.icon} ${selectedDateType.title}` : '—';
+    const typeKr   = selectedDateType ? selectedDateType.kr : '—';
+    const timeStr  = selectedTime || '—';
+    const vibeLabel = { palace: 'Mr. Queen 👑', perfect: 'Perfect Crown 🌸', filing: 'Filing for Love 📂' }[selectedVibe] || 'ترکیبی 믹س';
+    
+    return `💌 پرونده دیت ثبت شد آگاسی\n` +
+           `━━━━━━━━━━━━━━━━━━━━\n` +
+           `اتمسفر دیت : ${vibeLabel}\n` +
+           `نوع دیت    : ${typeStr} (${typeKr})\n` +
+           `تاریخ قرار  : ${dateStr}\n` +
+           `ساعت قرار   : ${timeStr}\n` +
+           `رضایت دربار : ${document.getElementById('crown-value').textContent}\n` +
+           `━━━━━━━━━━━━━━━━━━━━\n` +
+           `این پرونده با رضایت و انتخاب مستقیم آگاسی هلیا مهر شد. 💛`;
+  }
+
+  function setupFallbackLinks() {
+    const text = encodeURIComponent(generateShareableText());
+    const telegramLink = `https://t.me/share/url?url=${text}`;
+    const whatsappLink = `https://api.whatsapp.com/send?text=${text}`;
+    
+    document.getElementById('btn-whatsapp-fallback').href = whatsappLink;
+    document.getElementById('btn-telegram-fallback').href = telegramLink;
+  }
+
+  function proceedToSuccessManual() {
+    copySummary();
+    document.getElementById('tkt-status-val').textContent = '✅ Approved (Manual Share)';
+    document.getElementById('tkt-status-val').style.color = '#CDA276';
+    goToSuccess(true);
+  }
+
+  async function submitDate() {
+    const btn = document.getElementById('btn-submit');
+    const backBtn = document.getElementById('btn-submit-back');
+    btn.classList.add('btn-loading');
+    btn.innerHTML = '<div class="spinner"></div><span>در حال ارسال…</span>';
+    backBtn.style.pointerEvents = 'none';
+    backBtn.style.opacity = '0.5';
+
+    const dateStr = document.getElementById('sum-date').textContent;
+    const typeStr  = selectedDateType ? `${selectedDateType.icon} ${selectedDateType.title}` : '—';
+    const typeKr   = selectedDateType ? selectedDateType.kr : '—';
+    const timeStr  = selectedTime || '—';
+    const vibeLabel = { palace: 'Mr. Queen 👑', perfect: 'Perfect Crown 🌸', filing: 'Filing for Love 📂' }[selectedVibe] || 'ترکیبی 믹س';
+    const now      = new Date();
+    const ts = now.toLocaleString('fa-IR') + ' — ' + now.toISOString();
+
+    const messageBody =
+      `💌 پرونده دیت آگاسی ثبت شد\n` +
+      `━━━━━━━━━━━━━━━━━━━━\n` +
+      `اتمسفر دیت : ${vibeLabel}\n` +
+      `نوع دیت    : ${typeStr}\n` +
+      `            ${typeKr}\n` +
+      `تاریخ    : ${dateStr}\n` +
+      `ساعت     : ${timeStr}\n` +
+      `موزیک فعلی: ${currentTrackName}\n` +
+      `رضایت‌سنج ملکه: ${document.getElementById('crown-value').textContent}\n` +
+      `━━━━━━━━━━━━━━━━━━━━\n` +
+      `پرونده آگاسی توسط خودش بررسی و تأیید شد. ✨\n` +
+      `زمان ارسال: ${ts}`;
+
+    const templateParams = {
+      to_email: SAMYAR_EMAIL,
+      to_name: "Samyar",
+      from_name: "Helya Date Website",
+      user_name: "Helya",
+      name: "Helya Date Website",
+      reply_to: SAMYAR_EMAIL,
+      email: SAMYAR_EMAIL,
+      subject: "Helya picked a date 💌",
+      title: "Helya picked a date 💌",
+      message: messageBody,
+
+      date_type: (selectedDateType && selectedDateType.title) ? selectedDateType.title : "Not selected",
+      date_type_kr: (selectedDateType && selectedDateType.kr) ? selectedDateType.kr : "",
+      selected_date: dateStr || "Not selected",
+      selected_time: timeStr || "Not selected",
+      selected_vibe: selectedVibe || "Mixed K-drama",
+      submitted_at: ts
+    };
+
+    document.getElementById('dbg-last-params').textContent = JSON.stringify(templateParams);
+    document.getElementById('dbg-last-response').textContent = 'Waiting...';
+    document.getElementById('dbg-last-error').textContent = 'None';
+
+    console.group("EmailJS SEND DEBUG");
+    console.log("publicKey:", EMAILJS_PUBLIC_KEY);
+    console.log("serviceID:", EMAILJS_SERVICE_ID);
+    console.log("templateID:", EMAILJS_TEMPLATE_ID);
+    console.log("templateParams:", templateParams);
+    console.groupEnd();
+
+    if (mockEmailFailure) {
+      setTimeout(() => {
+        console.error('%c❌ MOCK FAILURE ENCOUNTERED', 'color:#FF6FAE;font-weight:bold');
+        handleSubmissionFailure(btn, backBtn, { status: 500, text: 'Simulated Developer Failure' }, templateParams);
+      }, 1000);
+      return;
+    }
+
+    try {
+      if (typeof emailjs === 'undefined') {
+        throw { status: 0, text: 'SDK Blocked or Internet disconnected' };
+      }
+      
+      const response = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
+      console.log('%c✅ SUCCESS', 'color:#4CAF50;font-weight:bold', response);
+      
+      document.getElementById('dbg-last-response').textContent = JSON.stringify(response);
+      document.getElementById('tkt-status-val').textContent = '✅ Approved (Auto Email)';
+      document.getElementById('tkt-status-val').style.color = '#4CAF50';
+      goToSuccess(true);
+    } catch (err) {
+      console.error('%c❌ FAILED', 'color:#FF6FAE;font-weight:bold', err);
+      handleSubmissionFailure(btn, backBtn, err, templateParams);
+    }
+  }
+
+  function handleSubmissionFailure(btn, backBtn, err, templateParams) {
+    btn.classList.remove('btn-loading');
+    btn.innerHTML = '<span>ثبت نهایی قرار</span><span class="btn-korean">데이트 확정 💌</span>';
+    backBtn.style.pointerEvents = '';
+    backBtn.style.opacity = '';
+    
+    const status = err?.status || 500;
+    const text = err?.text || 'خطای شبکه یا مسدود شدن SDK';
+    logToDebugBox(`EmailJS FAILED (${status}): ${text}`);
+    document.getElementById('dbg-last-error').textContent = `(${status}): ${text}`;
+    
+    console.error("EmailJS FAILED", {
+      status: status,
+      text: text,
+      error: err,
+      params: templateParams
+    });
+
+    let errorTip = 'ارسال ایمیل با خطا مواجه شد.';
+    if (status === 400) errorTip = 'خطای ۴۰۰: شناسه قالب یا متغیرهای درخواستی مطابقت ندارند.';
+    else if (status === 401) errorTip = 'خطای ۴۰۱: مجوز اتصال یا کلید عمومی عمومی اشتباه است.';
+    else if (status === 403) errorTip = 'خطای ۴۰۳: دامنه محلی یا منبع توسط سرور بلاک شده است.';
+    else if (status === 429) errorTip = 'خطای ۴۲۹: تعداد درخواست‌ها بیش از حد مجاز است. لطفاً دستی ارسال کنید.';
+    else if (status === 451) errorTip = 'خطای ۴۵۱: ارسال توسط مرورگر مسدود شد.';
+    
+    document.getElementById('fallback-error-text').innerHTML = `<b>توضیحات خطا:</b> ${errorTip} (${text})<br/>اما جای نگرانی نیست! از دکمه‌های زیر برای ارسال اطلاعات در تلگرام یا واتساپ اوپا استفاده کنید.`;
+    
+    document.getElementById('submission-fallback-box').style.display = 'block';
+    document.getElementById('submit-btn-group').style.display = 'none';
+    
+    setupFallbackLinks();
+  }
+
+  function animateSuccessStamp() {
+    const stamp = document.getElementById('success-stamp');
+    const ripple = document.getElementById('success-ripple');
+    if (!stamp || !ripple) return;
+    
+    stamp.classList.remove('animate');
+    ripple.classList.remove('animate');
+    void stamp.offsetWidth;
+    
+    stamp.classList.add('animate');
+    ripple.classList.add('animate');
+  }
+
+  function goToSuccess(emailSent) {
+    customizeTicketWithVibe();
+    showScreen(5);
+    launchConfetti();
+    buildSuccessTicket();
+    
+    setTimeout(animateSuccessStamp, 400);
+
+    if (selectedDate && selectedTime) {
+      const [h, m] = selectedTime.split(':').map(Number);
+      const target = new Date(selectedDate);
+      target.setHours(h, m, 0, 0);
+      startCountdown(target);
+    }
+  }
+
+  function renderConfirmation() {
+    const vibeLabel = { palace: 'Mr. Queen 👑', perfect: 'Perfect Crown 🌸', filing: 'Filing for Love 📂' }[selectedVibe] || 'پیش‌فرض ترکیبی';
+    document.getElementById('sum-vibe').textContent = vibeLabel;
+    
+    document.getElementById('sum-type').textContent =
+      selectedDateType ? `${selectedDateType.icon} ${selectedDateType.title} — ${selectedDateType.kr}` : '—';
+
+    let dateStr = '—';
+    if (selectedDate) {
+      if (typeof jalaali !== 'undefined') {
+        const j = jalaali.toJalaali(selectedDate.getFullYear(), selectedDate.getMonth()+1, selectedDate.getDate());
+        const weekDayFa = ['یک‌شنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنج‌شنبه','جمعه','شنبه'];
+        dateStr = `${weekDayFa[selectedDate.getDay()]}، ${toPersianNum(j.jd)} ${PERSIAN_MONTHS[j.jm-1]} ${toPersianNum(j.jy)}`;
+      } else {
+        dateStr = selectedDate.toLocaleDateString('fa-IR');
+      }
+    }
+    document.getElementById('sum-date').textContent = dateStr;
+    document.getElementById('sum-time').textContent = selectedTime
+      ? `${toPersianNum(selectedTimeLabel)} (${selectedTime})`
+      : '—';
+  }
+/* =============================================================================
+   SAFE INITIALIZATION & STRAP BOOTSTRAPPING
+   ============================================================================= */
+
+function safeInit(name, fn) {
+  try {
+    if (typeof fn === "function") {
+      fn();
+      console.info(`[safeInit] ${name}: OK`);
+    }
+  } catch (err) {
+    console.warn(`[safeInit] ${name}: skipped because of error`, err);
+  }
+}
+
+function goToScreen(target) {
+  const screens = ['screen-loading','screen-invitation','screen-date-type','screen-datetime','screen-confirmation','screen-success','screen-trailer'];
+  let id = target;
+  if (!target.startsWith('screen-')) {
+    id = `screen-${target}`;
+  }
+  const num = screens.indexOf(id);
+  if (num !== -1) {
+    showScreen(num);
+  } else {
+    const targetEl = document.getElementById(target) || document.getElementById(`screen-${target}`);
+    if (targetEl) {
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+      targetEl.classList.add("active");
+    } else {
+      console.error("[goToScreen] target screen not found:", target);
+    }
+  }
+}
+
+function startLoadingSequence() {
+  const bar = document.querySelector("#progress-bar")
+           || document.querySelector(".progress-bar-fill")
+           || document.querySelector(".progress-fill")
+           || document.querySelector("#loading-bar-fill")
+           || document.querySelector(".loading-bar-fill");
+
+  let progress = 0;
+
+  const interval = setInterval(() => {
+    progress += 4;
+
+    if (bar) {
+      bar.style.width = Math.min(progress, 100) + "%";
+    }
+
+    if (progress >= 100) {
+      clearInterval(interval);
+      goToScreen("invitation"); 
+    }
+  }, 80);
+
+  // Emergency bypass: 4.5 seconds fallback
+  setTimeout(() => {
+    const current = document.querySelector(".screen.active")?.id || "";
+    if (current.includes("loading")) {
+      console.warn("[boot] emergency loading bypass fired");
+      clearInterval(interval);
+      goToScreen("invitation");
+    }
+  }, 4500);
+}
+
+let emailjsInitDone = false;
+
+function initEmailJS() {
+  if (typeof emailjs !== 'undefined') {
+    if (emailjsInitDone) return;
+    emailjs.init({
+      publicKey: EMAILJS_PUBLIC_KEY
+    });
+    emailjsInitDone = true;
+    console.log('%c📧 EmailJS initialised', 'color:#D8B45A', '| key:', EMAILJS_PUBLIC_KEY.slice(0,6) + '…');
+  } else {
+    throw new Error("emailjs SDK is not loaded/available");
+  }
+}
+
+function initDebugPanel() {
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && (e.key === 'E' || e.key === 'e' || e.keyCode === 69)) {
+      e.preventDefault();
+      toggleDebugPanel();
+    }
+  });
+  console.info("Debug panel keys hooked.");
+}
+
+function bootApp() {
+  console.info("[boot] starting Helya Date");
+
+  startLoadingSequence();
+
+  safeInit("emailjs", initEmailJS);
+  safeInit("stars background", createStars);
+  
+  // Vibe Setup
+  safeInit("default vibe setup", () => {
+    const defaultVibeCard = document.getElementById('vibe-perfect');
+    if (defaultVibeCard) {
+      selectVibe('perfect', defaultVibeCard);
+    }
+  });
+
+  safeInit("logo easter egg", initLogoEasterEgg);
+  safeInit("equalizer initialization", stopEqualizer);
+
+  // Init cinematic layer and thumbnails
+  safeInit("cinematic optional features", initCinematicLayer);
+
+  // Hook Yes click haptic
+  safeInit("yes haptic", () => {
+    document.getElementById('btn-yes')?.addEventListener('click', () => {
+      if (navigator.vibrate) navigator.vibrate(40);
+    });
+  });
+
+  // Parallax setup
+  safeInit("desktop parallax", () => {
+    if (window.matchMedia('(min-width:768px)').matches && !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+      document.addEventListener('mousemove', e => {
+        const cx = (e.clientX / window.innerWidth  - 0.5) * 12;
+        const cy = (e.clientY / window.innerHeight - 0.5) * 8;
+        const col = document.getElementById('collage-img');
+        if (col) col.style.transform = `translate(${cx}px,${cy}px) scale(1.04)`;
+      });
+    }
+  });
+
+  safeInit("debug panel", initDebugPanel);
+}
+
+// Bootstrap loader
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", bootApp);
+} else {
+  bootApp();
+}
+</script>
+</body>
+</html>
